@@ -18,10 +18,6 @@ class Character extends MovableObject {
         'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/6.png',
         'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/7.png',
         'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/8.png',
-        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/9.png',
-        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/10.png',
-        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/11.png',
-        'img/1.Sharkie/4.Attack/Bubble trap/op1 (with bubble formation)/12.png',
     ]
     IMAGES_ATTACK_FINSLAP = [
         'img/1.Sharkie/4.Attack/Fin slap/1.png',
@@ -92,6 +88,13 @@ class Character extends MovableObject {
             if (this.world.keyboard.SPACE) {
                 // swim animation
                 this.playAnimation(this.IMAGES_ATTACK_FINSLAP);
+            }
+        }, 1000 / 60);
+
+        setInterval(() => {
+            if (this.world.keyboard.Q) {
+                // swim animation
+                this.playAnimation(this.IMAGES_ATTACK_BUBBLETRAP);
             }
         }, 1000 / 60);
     }
