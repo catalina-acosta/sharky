@@ -16,7 +16,7 @@ class World {
         this.keyboard = keyboard
         this.statusBarEnergy = new StatusBar(ImageArray.STATUSBAR_IMAGES);
         this.statusBarPB = new StatusBar(ImageArray.STATUS_PB_IMAGES);
-        this.statusBarPB.y = 60;
+        this.statusBarPB.y = 30;
         this.draw();
         this.setWorld();
         this.checkCollisions();
@@ -33,13 +33,11 @@ class World {
                     this.character.hit();
                     this.statusBarEnergy.setPercentage(this.character.energy);
                 }
-
             })
         }, 200);
     }
 
     draw() {
-        // clear canavs
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.ctx.translate(this.cameraX, 0);
@@ -53,9 +51,7 @@ class World {
         this.addObjectToMap(this.level.enemies);
         this.addToMap(this.character);
         this.ctx.translate(-this.cameraX, 0); // back
-
         
-        // draw() wird immer wieder aufgerufen
         let self = this;
         requestAnimationFrame(function() {
             self.draw();

@@ -86,8 +86,6 @@ class Character extends MovableObject {
                 this.swimmingSound.play();
                 this.moveLeft();
                 this.otherDirection = true;
-            // } else if (this.world.keyboard.LEFT && this.x == this.world.level.levelBeginX) {
-            //     this.otherDirection = false;
             }
 
             if(this.world.keyboard.UP && this.y > -90){
