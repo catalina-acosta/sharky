@@ -77,27 +77,27 @@ class Character extends MovableObject {
         setInterval(()=>{
             this.swimmingSound.pause();
 
-            if(this.world.keyboard.RIGHT && this.x > 0 && this.x < this.world.level.levelEndX){
+            if(this.world.keyboard.RIGHT && this.x <= this.world.level.levelEndX){
                 this.moveRight();
                 this.swimmingSound.play();
             }
 
-            if(this.world.keyboard.LEFT){
+            if(this.world.keyboard.LEFT && this.x > this.world.level.levelBeginX){
                 this.swimmingSound.play();
                 this.moveLeft();
                 this.otherDirection = true;
+            // } else if (this.world.keyboard.LEFT && this.x == this.world.level.levelBeginX) {
+            //     this.otherDirection = false;
             }
 
             if(this.world.keyboard.UP && this.y > -90){
                 this.y -= this.speed;
                 this.swimmingSound.play();
-                console.log(this.otherDirection);
             }
 
             if(this.world.keyboard.DOWN && this.y < 320){
                 this.y += this.speed;
                 this.swimmingSound.play();
-                console.log(this.otherDirection);
             }
 
             this.world.cameraX = -this.x + 50;

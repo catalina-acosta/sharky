@@ -7,11 +7,16 @@ class World {
     ctx;
     keyboard;
     cameraX = 0;
+    statusBarEnergy;
+    statusBarPB;
 
     constructor(canvas){
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard
+        this.statusBarEnergy = new StatusBar(ImageArray.STATUSBAR_IMAGES);
+        this.statusBarPB = new StatusBar(ImageArray.STATUS_PB_IMAGES);
+        this.statusBarPB.y = 60;
         this.draw();
         this.setWorld();
         this.checkCollisions();
@@ -26,7 +31,7 @@ class World {
             this.level.enemies.forEach( enemy => {
                 if (this.character.isColliding(enemy)) {
                     this.character.hit();
-                    console.log("collision with charcarcter", this.character.energy )
+                    this.statusBarEnergy.setPercentage(this.character.energy);
                 }
 
             })
@@ -36,14 +41,20 @@ class World {
     draw() {
         // clear canavs
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        this.ctx.translate(this.cameraX, 0);
 
+        this.ctx.translate(this.cameraX, 0);
         this.addObjectToMap(this.level.backgroundObjects);
+        
+        this.ctx.translate(-this.cameraX, 0); // back
+        this.addToMap(this.statusBarPB);
+        this.addToMap(this.statusBarEnergy);
+        this.ctx.translate(this.cameraX, 0); // forwards
+        
         this.addObjectToMap(this.level.enemies);
         this.addToMap(this.character);
-        // this.addObjectToMap(this.lights);
+        this.ctx.translate(-this.cameraX, 0); // back
+
         
-        this.ctx.translate(-this.cameraX, 0);
         // draw() wird immer wieder aufgerufen
         let self = this;
         requestAnimationFrame(function() {

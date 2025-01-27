@@ -1,11 +1,5 @@
-class MovableObject {
-    x = 50;
-    y = 150;
-    img;
-    height = 200;
-    width = 200;
-    imageCache = {};
-    currentImage = 0;
+class MovableObject extends DrawableObject {
+
     speed = 0.15;
     otherDirection = false;
     offset = {
@@ -14,35 +8,9 @@ class MovableObject {
         left: 0,
         right: 0
     }
-
     energy = 100;
     lastHit = 0;
 
-    loadImg(path) {
-        this.img = new Image();
-        this.img.src = path;
-    }
-
-    loadImages(array) {
-        array.forEach(path => {
-            let img = new Image();
-            img.src = path;
-            this.imageCache[path] = img;
-        });
-    }
-    draw(ctx) {
-        ctx.drawImage(this.img, this.x, this.y, this.width, this.height);
-    }
-
-    drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Enemy || this instanceof EndBoss) {
-            ctx.beginPath();
-            ctx.lineWidth = '5';
-            ctx.strokeStyle = 'blue';
-            ctx.rect(this.x - this.offset.right, this.y, this.width, this.height);
-            ctx.stroke();
-        }
-    }
     
     isColliding(mo) {
         return this.x + this.width - this.offset.right > mo.x + mo.offset.left && 
@@ -63,17 +31,11 @@ class MovableObject {
     isHurt() {
         let timepassed = new Date().getTime() - this.lastHit;
         timepassed = timepassed / 1000;
-        console.log(timepassed);
-        
-        return timepassed < 1.5;
+        return timepassed < 0.8;
     }
 
     isDead() {
         return this.energy == 0;
-    }
-
-    isHurt() {
-
     }
 
     playAnimation(images) {
