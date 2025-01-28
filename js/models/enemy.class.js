@@ -1,11 +1,14 @@
 class Enemy extends MovableObject {
     height = 100;
     width = 100;
-    IMAGES_SWIMING = [];
+    IMAGES = [];
     currentImage = 0;
-    constructor(){
-        super().loadImg('img/2.Enemy/1.Puffer fish (3 color options)/1.Swim/1.swim1.png');
-        this.loadImages(ImageArray.PUFFERFISH_IMAGES_TRANSITION);
+    constructor(name, images){
+        super();
+        this.name = name
+        this.IMAGES = images;
+        this.loadImg(this.IMAGES[0])
+        this.loadImages(this.IMAGES);
         this.x = 200 + Math.random() * 500;
         this.y = 200 + Math.random() * 200;
         this.speed = 0.15 + Math.random() * 0.25;
@@ -18,8 +21,7 @@ class Enemy extends MovableObject {
         }, 1000 / 60);
 
         setInterval(() => {
-            this.playAnimation(ImageArray.PUFFERFISH_IMAGES_TRANSITION);
+            this.playAnimation(this.IMAGES);
         }, 200);
     }
-
 }

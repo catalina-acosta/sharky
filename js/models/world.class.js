@@ -1,7 +1,7 @@
 class World {
     character = new Character();
     level = level1;
-    enemies = level1.enemies;
+    enemies = this.level.enemies;
     backgroundObjects = level1.backgroundObjects;
     coins = [];
     poisonBubbles = [];
@@ -18,7 +18,9 @@ class World {
         this.canvas = canvas;
         this.keyboard = keyboard
         this.statusBarEnergy = new StatusBar(ImageArray.STATUSBAR_IMAGES);
+        console.log(this.statusBarEnergy);
         this.statusBarPB = new StatusBar(ImageArray.STATUS_PB_IMAGES);
+        console.log(this.statusBarPB);
         this.statusBarCoins = new StatusBar(ImageArray.STATUSBAR_COIN_IMAGES);
         this.statusBarPB.y = 25;
         this.statusBarPB.setPercentage(0);
@@ -46,14 +48,14 @@ class World {
                 if (this.character.isColliding(coin)) {
                     this.character.collectItem('coinLevel');
                     this.statusBarCoins.setPercentage(this.character.coinLevel);
-                    this.coins.pop(coin);
+                    this.coins.splice(coin, 1);
                 }
             });
             this.poisonBubbles.forEach( pb => {
                 if (this.character.isColliding(pb)) {
                     this.character.collectItem('poisonBubblesLevel');
                     this.statusBarPB.setPercentage(this.character.poisonBubblesLevel);
-                    this.poisonBubbles.pop(pb);
+                    this.poisonBubbles.splice(pb, 1);
                 }
             })
         }, 200);

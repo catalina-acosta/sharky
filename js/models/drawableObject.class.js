@@ -25,7 +25,7 @@ class DrawableObject {
     }
 
     drawFrame(ctx) {
-        if (this instanceof Character || this instanceof Enemy || this instanceof EndBoss) {
+        if (this instanceof Character || this instanceof Enemy || this instanceof EndBoss || this instanceof Coin || this instanceof PoisonBubble) {
             ctx.beginPath();
             ctx.lineWidth = '5';
             ctx.strokeStyle = 'blue';

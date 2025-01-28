@@ -20,7 +20,6 @@ class Character extends MovableObject {
         this.loadImages(ImageArray.CHARACTER_ATTACK_FINSLAP);
         this.loadImages(ImageArray.CHARACTER_DEAD);
         this.loadImages(ImageArray.CHARACTER_HURT);
-
         this.animate();
     }
 
@@ -66,14 +65,17 @@ class Character extends MovableObject {
                 this.playAnimation(ImageArray.CHARACTER_HURT); 
             }
             
-        }, 50);
+        }, 100);
 
         setInterval(() => {
             if (this.world.keyboard.SPACE) {
-                // swim animation
-                this.playAnimation(ImageArray.CHARACTER_ATTACK_FINSLAP);
+                // attack animation
+                if(!this.world.keyboard.SPACE_SOLVED) {
+                    this.playAnimation(ImageArray.CHARACTER_ATTACK_FINSLAP);
+                };
+                this.world.keyboard.SPACE_SOLVED = true;
             }
-        }, 1000 / 60);
+        }, 1000 / 60    );
 
         setInterval(() => {
             if (this.world.keyboard.Q) {

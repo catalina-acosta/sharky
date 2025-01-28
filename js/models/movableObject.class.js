@@ -1,5 +1,4 @@
 class MovableObject extends DrawableObject {
-
     speed = 0.15;
     otherDirection = false;
     offset = {
@@ -13,7 +12,6 @@ class MovableObject extends DrawableObject {
     coinLevel = 0;
     poisonBubblesLevel = 0;
 
-    
     isColliding(mo) {
         return this.x + this.width - this.offset.right > mo.x + mo.offset.left && 
         this.y + this.height - this.offset.bottom > mo.y + mo.offset.top &&
@@ -42,6 +40,7 @@ class MovableObject extends DrawableObject {
 
     collectItem(itemLevel) {
         this[itemLevel] += 5;
+        console.log(this[itemLevel]);
         if (this[itemLevel] > 100) {
             this[itemLevel] = 100;
         }
