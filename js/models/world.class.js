@@ -3,12 +3,15 @@ class World {
     level = level1;
     enemies = level1.enemies;
     backgroundObjects = level1.backgroundObjects;
+    coins = [];
+    poisonBubbles = [];
     canvas;
     ctx;
     keyboard;
     cameraX = 0;
     statusBarEnergy;
     statusBarPB;
+    statusBarCoins;
 
     constructor(canvas){
         this.ctx = canvas.getContext('2d');
@@ -16,10 +19,15 @@ class World {
         this.keyboard = keyboard
         this.statusBarEnergy = new StatusBar(ImageArray.STATUSBAR_IMAGES);
         this.statusBarPB = new StatusBar(ImageArray.STATUS_PB_IMAGES);
-        this.statusBarPB.y = 30;
+        this.statusBarCoins = new StatusBar(ImageArray.STATUSBAR_COIN_IMAGES);
+        this.statusBarPB.y = 25;
+        this.statusBarPB.setPercentage(0);
+        this.statusBarCoins.setPercentage(0);
+        this.statusBarCoins.y = 60;
         this.draw();
         this.setWorld();
         this.checkCollisions();
+        this.addCollectableItems(10);
     }
 
     setWorld() {  
@@ -33,8 +41,28 @@ class World {
                     this.character.hit();
                     this.statusBarEnergy.setPercentage(this.character.energy);
                 }
-            })
+            });
+            this.coins.forEach( coin => {
+                if (this.character.isColliding(coin)) {
+                    this.character.collectCoin();
+                    this.statusBarCoins.setPercentage(this.character.coinLevel);
+                    this.coins.pop(coin);
+                }
+            });
+            // this.poisonBubbles.forEach( pb => {
+            //     if (this.character.isColliding(pb)) {
+            //         this.character.collectPoisonBubble();
+            //         this.statusBarPB.setPercentage(this.character.poisonBubbles);
+            //     }
+            // })
         }, 200);
+    }
+
+    addCollectableItems(amountOfItems) {
+        for (let index = 0; index < amountOfItems; index++) {
+            this.coins.push(new Coin());
+            this.poisonBubbles.push(new PoisonBubble());
+        }
     }
 
     draw() {
@@ -46,8 +74,11 @@ class World {
         this.ctx.translate(-this.cameraX, 0); // back
         this.addToMap(this.statusBarPB);
         this.addToMap(this.statusBarEnergy);
+        this.addToMap(this.statusBarCoins);
         this.ctx.translate(this.cameraX, 0); // forwards
         
+        this.addObjectToMap(this.coins);
+        this.addObjectToMap(this.poisonBubbles);
         this.addObjectToMap(this.level.enemies);
         this.addToMap(this.character);
         this.ctx.translate(-this.cameraX, 0); // back

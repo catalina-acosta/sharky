@@ -10,6 +10,8 @@ class MovableObject extends DrawableObject {
     }
     energy = 100;
     lastHit = 0;
+    coinLevel = 0;
+    poisonBubblesLevel = 0;
 
     
     isColliding(mo) {
@@ -36,6 +38,13 @@ class MovableObject extends DrawableObject {
 
     isDead() {
         return this.energy == 0;
+    }
+
+    collectCoin() {
+        this.coinLevel += 5;
+        if (this.coinLevel > 100) {
+            this.coinLevel = 100;
+        }
     }
 
     playAnimation(images) {

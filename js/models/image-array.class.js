@@ -17,6 +17,15 @@ class ImageArray {
         'img/4. Marcadores/green/poisoned bubbles/100_ copia 3.png',
     ]
 
+    static STATUSBAR_COIN_IMAGES = [
+        'img/4. Marcadores/green/Coin/0_  copia 4.png',
+        'img/4. Marcadores/green/Coin/20_  copia 2.png',
+        'img/4. Marcadores/green/Coin/40_  copia 4.png',
+        'img/4. Marcadores/green/Coin/60_  copia 4.png',
+        'img/4. Marcadores/green/Coin/80_  copia 4.png',
+        'img/4. Marcadores/green/Coin/100_ copia 4.png',
+    ]
+
     static COIN_BAR = [
         'img/4. Marcadores/Purple/0_ _1.png',
         'img/4. Marcadores/Purple/20_ .png',
@@ -79,6 +88,40 @@ class ImageArray {
         'img/1.Sharkie/5.Hurt/1.Poisoned/4.png',
         'img/1.Sharkie/5.Hurt/1.Poisoned/5.png',
     ];
+
+    static COIN_IMAGES = [
+        'img/4. Marcadores/1. Coins/1.png',
+        'img/4. Marcadores/1. Coins/2.png',
+        'img/4. Marcadores/1. Coins/3.png',
+        'img/4. Marcadores/1. Coins/4.png'
+    ];
+
+    static POISON_BUBBLE_IMAGES = [
+        'img/4. Marcadores/Posión/Animada/1.png',
+        'img/4. Marcadores/Posión/Animada/2.png',
+        'img/4. Marcadores/Posión/Animada/3.png',
+        'img/4. Marcadores/Posión/Animada/4.png',
+        'img/4. Marcadores/Posión/Animada/5.png',
+        'img/4. Marcadores/Posión/Animada/6.png',
+        'img/4. Marcadores/Posión/Animada/7.png',
+    ];
+
+    static PUFFERFISH_IMAGES_TRANSITION = [
+        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition1.png',
+        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition2.png',
+        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition3.png',
+        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition4.png',
+        'img/2.Enemy/1.Puffer fish (3 color options)/2.transition/1.transition5.png',
+    ];
+
+    static JELLYFISH_IMAGES_REGULAR = [
+        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 1.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 2.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 3.png',
+        'img/2.Enemy/2 Jelly fish/Regular damage/Lila 4.png',
+    ];
+
+
 
 }
 
