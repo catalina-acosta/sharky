@@ -44,17 +44,18 @@ class World {
             });
             this.coins.forEach( coin => {
                 if (this.character.isColliding(coin)) {
-                    this.character.collectCoin();
+                    this.character.collectItem('coinLevel');
                     this.statusBarCoins.setPercentage(this.character.coinLevel);
                     this.coins.pop(coin);
                 }
             });
-            // this.poisonBubbles.forEach( pb => {
-            //     if (this.character.isColliding(pb)) {
-            //         this.character.collectPoisonBubble();
-            //         this.statusBarPB.setPercentage(this.character.poisonBubbles);
-            //     }
-            // })
+            this.poisonBubbles.forEach( pb => {
+                if (this.character.isColliding(pb)) {
+                    this.character.collectItem('poisonBubblesLevel');
+                    this.statusBarPB.setPercentage(this.character.poisonBubblesLevel);
+                    this.poisonBubbles.pop(pb);
+                }
+            })
         }, 200);
     }
 

@@ -40,10 +40,10 @@ class MovableObject extends DrawableObject {
         return this.energy == 0;
     }
 
-    collectCoin() {
-        this.coinLevel += 5;
-        if (this.coinLevel > 100) {
-            this.coinLevel = 100;
+    collectItem(itemLevel) {
+        this[itemLevel] += 5;
+        if (this[itemLevel] > 100) {
+            this[itemLevel] = 100;
         }
     }
 
