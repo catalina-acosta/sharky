@@ -4,9 +4,6 @@ class Character extends MovableObject {
     IMAGES = [];
     world;
     isAttacking = false;
-    // isIdle = true;
-
-
     swimmingSound = new Audio('../audio/swiming.mp3');
 
     offset = {
@@ -66,7 +63,7 @@ class Character extends MovableObject {
                 this.playAnimation(ImageArray.CHARACTER_ATTACK_FINSLAP);
                 setTimeout(() => {
                     this.isAttacking = false;
-                }, 1800);
+                }, 1000);
             } 
             else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
                 // swim animation

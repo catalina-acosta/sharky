@@ -3,8 +3,8 @@ let world;
 let keyboard = new Keyboard();
 
 function startGame() {
-    instructionsBox = document.getElementById("instructions");
-    instructionsBox.classList.add("d-none");
+    instructionsBox = document.getElementById("instructions-container");
+    instructionsBox.innerHTML = "";
     canvas = document.getElementById("canvas");
     canvas.classList.remove("d-none");
     world = new World(canvas, keyboard);
@@ -12,7 +12,6 @@ function startGame() {
 
 function init() {
     canvas = document.getElementById("canvas");
-    canvas.classList.add("d-none");
 }
 
 window.addEventListener('keydown', (event) => {

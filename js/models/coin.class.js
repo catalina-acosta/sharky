@@ -1,6 +1,7 @@
 class Coin extends MovableObject {
     width = 30;
     height = 30;
+    iscollected = false;
 
     constructor() {
         super().loadImg('img/4. Marcadores/1. Coins/3.png');

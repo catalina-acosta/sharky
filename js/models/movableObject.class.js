@@ -40,7 +40,6 @@ class MovableObject extends DrawableObject {
 
     collectItem(itemLevel) {
         this[itemLevel] += 5;
-        console.log(this[itemLevel]);
         if (this[itemLevel] > 100) {
             this[itemLevel] = 100;
         }
