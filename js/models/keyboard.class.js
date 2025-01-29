@@ -4,7 +4,7 @@ class Keyboard {
     UP = false;
     DOWN = false;
     SPACE = false;
-    Q = false;
+    D = false;
     SPACE_SOLVED = false;
 
 }

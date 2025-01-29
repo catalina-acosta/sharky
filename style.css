@@ -45,6 +45,10 @@ canvas {
     background-color: #64c9e0;
     width: 720px;
     height: 480px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
 }
 
 
@@ -59,11 +63,6 @@ p {
     font-family: 'LuckiestGuy', sans-serif;
 }
 
-.test-div {
-    height: 80px;
-    width: 80px;
-}
-
 .d-none {
     display: none;
 }
@@ -75,4 +74,25 @@ button {
 
 button:hover {
     cursor: pointer;
+}
+
+.instruction-key {
+    width: 200px;
+}
+
+.key-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-around;
+    gap: 36px;
+}
+
+#instructions h2 {
+    text-align: center;
+}
+
+.single-key-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

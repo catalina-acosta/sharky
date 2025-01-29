@@ -30,7 +30,6 @@ window.addEventListener('keydown', (event) => {
 
     if (event.code === 'Space') {
         keyboard.SPACE = true;
-        console.log("space key pressed");
 
     }
 
@@ -38,8 +37,8 @@ window.addEventListener('keydown', (event) => {
         keyboard.DOWN = true;
     }
 
-    if (event.code === 'KeyQ') {
-        keyboard.Q = true;
+    if (event.code === 'KeyD') {
+        keyboard.D = true;
     }
 });
 
@@ -65,7 +64,7 @@ window.addEventListener('keyup', (event) => {
         keyboard.DOWN = false;
     }
 
-    if (event.code === 'KeyQ') {
-        keyboard.Q = false;
+    if (event.code === 'KeyD') {
+        keyboard.D = false;
     }
 });
