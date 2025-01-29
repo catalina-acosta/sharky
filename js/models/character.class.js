@@ -77,15 +77,15 @@ class Character extends MovableObject {
         //     }
         // }
 
-        // setInterval(() => {
-        //     if (this.world.keyboard.SPACE) {
-        //         // attack animation
-        //         if(!this.world.keyboard.SPACE_SOLVED) {
-        //             this.playAnimation(ImageArray.CHARACTER_ATTACK_FINSLAP);
-        //         };
-        //         this.world.keyboard.SPACE_SOLVED = true;
-        //     }
-        // }, 1000 / 60 );
+        setInterval(() => {
+            if (this.world.keyboard.SPACE) {
+                // attack animation
+                this.playAnimation(ImageArray.CHARACTER_ATTACK_FINSLAP);
+                    if(!this.world.keyboard.SPACE_SOLVED) {
+                        this.world.keyboard.SPACE_SOLVED = true;
+                    };
+            }
+        }, 1000 / 60 );
 
         setInterval(() => {
             if (this.world.keyboard.Q) {

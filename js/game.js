@@ -2,9 +2,17 @@ let canvas;
 let world;
 let keyboard = new Keyboard();
 
+function startGame() {
+    instructionsBox = document.getElementById("instructions");
+    instructionsBox.classList.add("d-none");
+    canvas = document.getElementById("canvas");
+    canvas.classList.remove("d-none");
+    world = new World(canvas, keyboard);
+}
+
 function init() {
     canvas = document.getElementById("canvas");
-    world = new World(canvas, keyboard);
+    canvas.classList.add("d-none");
 }
 
 window.addEventListener('keydown', (event) => {

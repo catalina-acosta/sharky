@@ -1,9 +1,78 @@
+@font-face {
+    font-family: 'LuckiestGuy';
+    src: url('./fonts/LuckiestGuy-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
 body {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    font-family: 'LuckiestGuy', sans-serif;
+    position: relative; /* Ensure the body is positioned relative for the pseudo-element */
+    width: 100%;
+    height: 100vh; /* Ensure the body takes the full viewport height */
+    overflow: hidden; /* Prevent scrolling */
+    background-color: #64c9e0;
+    color: #2f2771;
+}
+
+body::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: url('img/3. Background/Dark/1.png');
+    background-size: cover; /* Ensure the background image covers the entire element */
+    background-repeat: no-repeat; /* Prevent background repetition */
+    opacity: 0.5; /* Adjust the opacity as needed */
+    z-index: -1; /* Ensure the pseudo-element is behind the content */
 }
 
 canvas {
     background-color: black;
+    border: 12px solid #2f2771;
+    border-radius: 8px;
+}
+
+#instructions {
+    border: 12px solid #2f2771;
+    border-radius: 8px;
+    background-color: #64c9e0;
+    width: 720px;
+    height: 480px;
+}
+
+
+h1 {
+    font-family: 'LuckiestGuy', sans-serif;
+    letter-spacing: 6px;
+    font-size: 64px;
+
+}
+
+p {
+    font-family: 'LuckiestGuy', sans-serif;
+}
+
+.test-div {
+    height: 80px;
+    width: 80px;
+}
+
+.d-none {
+    display: none;
+}
+
+button {
+    border: none;
+    background-color: transparent;
+}
+
+button:hover {
+    cursor: pointer;
 }
