@@ -12,6 +12,7 @@ class World {
     statusBarEnergy;
     statusBarPB;
     statusBarCoins;
+    bubbles = [new Bubble()]
 
     constructor(canvas){
         this.ctx = canvas.getContext('2d');
@@ -83,6 +84,7 @@ class World {
         this.addObjectToMap(this.coins);
         this.addObjectToMap(this.poisonBubbles);
         this.addObjectToMap(this.level.enemies);
+        this.addObjectToMap(this.bubbles);
         this.addToMap(this.character);
         this.ctx.translate(-this.cameraX, 0); // back
         
