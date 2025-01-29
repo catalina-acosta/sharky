@@ -16,7 +16,7 @@ class World {
     constructor(canvas){
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
-        this.keyboard = keyboard
+        this.keyboard = keyboard;
         this.statusBarEnergy = new StatusBar(ImageArray.STATUSBAR_IMAGES);
         console.log(this.statusBarEnergy);
         this.statusBarPB = new StatusBar(ImageArray.STATUS_PB_IMAGES);

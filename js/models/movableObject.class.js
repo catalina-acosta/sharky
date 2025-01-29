@@ -52,6 +52,7 @@ class MovableObject extends DrawableObject {
         this.img = this.imageCache[path];
         this.currentImage++;
     }
+
     moveRight() {
         this.x += this.speed;
         this.otherDirection = false;
@@ -59,5 +60,13 @@ class MovableObject extends DrawableObject {
 
     moveLeft() {
         this.x -= this.speed;
+    }
+
+    moveUp() {
+        this.y -= this.speed;
+    }
+
+    moveDown() {
+        this.y += this.speed;
     }
 }

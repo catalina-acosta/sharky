@@ -3,6 +3,7 @@ class Character extends MovableObject {
     speed = 5;
     IMAGES = [];
     world;
+    // bubble;
 
     swimmingSound = new Audio('../audio/swiming.mp3');
 
@@ -15,12 +16,14 @@ class Character extends MovableObject {
 
     constructor(){
         super().loadImg(ImageArray.CHARACTER_SWIMING[0]);
+        // loadImg('img/1.Sharkie/4.Attack/Bubble trap/Bubble.png');
         this.loadImages(ImageArray.CHARACTER_SWIMING);
         this.loadImages(ImageArray.CHARACTER_ATTACK_BUBBLETRAP);
         this.loadImages(ImageArray.CHARACTER_ATTACK_FINSLAP);
         this.loadImages(ImageArray.CHARACTER_DEAD);
         this.loadImages(ImageArray.CHARACTER_HURT);
         this.animate();
+        // this.bubble = bubble;
     }
 
     animate() {
@@ -39,12 +42,12 @@ class Character extends MovableObject {
             }
 
             if(this.world.keyboard.UP && this.y > -90){
-                this.y -= this.speed;
+                this.moveUp();
                 this.swimmingSound.play();
             }
 
             if(this.world.keyboard.DOWN && this.y < 320){
-                this.y += this.speed;
+                this.moveDown();
                 this.swimmingSound.play();
             }
 
@@ -67,15 +70,22 @@ class Character extends MovableObject {
             
         }, 100);
 
-        setInterval(() => {
-            if (this.world.keyboard.SPACE) {
-                // attack animation
-                if(!this.world.keyboard.SPACE_SOLVED) {
-                    this.playAnimation(ImageArray.CHARACTER_ATTACK_FINSLAP);
-                };
-                this.world.keyboard.SPACE_SOLVED = true;
-            }
-        }, 1000 / 60    );
+        // setAttack() {
+        //     if (this.world.keyboard.SPACE && !this.world.keyboard.SPACE_SOLVED) {
+        //         this.playAttackAnimation(ImageArray.CHARACTER_ATTACK_FINSLAP);
+        //         this.world.keyboard.SPACE_SOLVED = true;
+        //     }
+        // }
+
+        // setInterval(() => {
+        //     if (this.world.keyboard.SPACE) {
+        //         // attack animation
+        //         if(!this.world.keyboard.SPACE_SOLVED) {
+        //             this.playAnimation(ImageArray.CHARACTER_ATTACK_FINSLAP);
+        //         };
+        //         this.world.keyboard.SPACE_SOLVED = true;
+        //     }
+        // }, 1000 / 60 );
 
         setInterval(() => {
             if (this.world.keyboard.Q) {
@@ -84,8 +94,21 @@ class Character extends MovableObject {
             }
         }, 1000 / 60);
     }
-
-    jump(){
-
+    
+    setAttack(){
+        if (this.world.keyboard.SPACE ) {
+            this.playAttackAnimation(ImageArray.CHARACTER_ATTACK_FINSLAP);
+            this.world.keyboard.SPACE_SOLVED = true;
+            console.log("space key from setAttack()")
+        }
     }
+
+    playAttackAnimation(images) {
+        images.array.forEach(image, index => {
+            setTimeout(() => {
+                this.img = this.imageCache[image];
+            }, index * 100);
+        });
+    }
+    
 }
