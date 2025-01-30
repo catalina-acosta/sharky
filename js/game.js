@@ -63,6 +63,6 @@ window.addEventListener('keyup', (event) => {
     }
 
     if (event.code === 'KeyD') {
-        keyboard.D = false;
+
     }
 });

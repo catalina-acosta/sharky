@@ -41,9 +41,16 @@ class MovableObject extends DrawableObject {
     }
 
     collectItem(itemLevel) {
-        this[itemLevel] += 5;
+        this[itemLevel] += 10;
         if (this[itemLevel] > 100) {
             this[itemLevel] = 100;
+        }
+    }
+
+    useItem(itemLevel) {
+        this[itemLevel] -= 10;
+        if (this[itemLevel] <= 0) {
+            this[itemLevel] = 0;
         }
     }
 

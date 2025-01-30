@@ -71,12 +71,12 @@ class Character extends MovableObject {
             else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
                 // swim animation
                 this.playAnimation(ImageArray.CHARACTER_SWIMING);
-            } else if (this.world.keyboard.D) {
-                this.isAttacking = true;
-                this.playAnimation(ImageArray.CHARACTER_ATTACK_BUBBLETRAP);
-                setTimeout(() => {
-                    this.isAttacking = false;
-                }, 1200);
+            } else if (this.world.keyboard.D && this.attackAnimationDone == false) {
+                this.playAnimation(ImageArray.CHARACTER_ATTACK_BUBBLETRAP, true);
+                if(this.attackAnimationDone) {
+                    this.attackAnimationDone = false;
+                    this.world.keyboard.D = false;
+                }
             } else {
                 this.playAnimation(ImageArray.CHARACTER_IDLE);
             }
