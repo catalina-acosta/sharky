@@ -3,19 +3,18 @@ class Bubble extends MovableObject {
     height = 20;
     speed = 20;
 
-    constructor() {
+    constructor(x, y) {
         super().loadImg('img/1.Sharkie/4.Attack/Bubble trap/Poisoned Bubble (for whale).png');
-        this.x =  200;
-        this.y = 200;
-        this.bubbleAttack(200, 100);
+        this.x =  x;
+        this.y = y;
+        this.bubbleAttack();
         
     }
 
-    bubbleAttack(x, y) {
-        this.x = x;
-        this.y = y;
+    bubbleAttack() {
         setInterval(() => {
-            this.moveRight();
-        }, 100);
+            this.x += 10;
+            this.y += 1;
+        }, 20);
     }
 }

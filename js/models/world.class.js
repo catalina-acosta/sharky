@@ -12,7 +12,7 @@ class World {
     statusBarEnergy;
     statusBarPB;
     statusBarCoins;
-    bubbles = [new Bubble()]
+    bubbles = []
 
     constructor(canvas){
         this.ctx = canvas.getContext('2d');
@@ -31,35 +31,48 @@ class World {
         this.setWorld();
         this.checkCollisions();
         this.addCollectableItems(10);
+        this.run();
     }
 
     setWorld() {  
         this.character.world = this;
     }
 
-    checkCollisions() {
+    run() {
         setInterval(() => {
-            this.level.enemies.forEach( enemy => {
-                if (this.character.isColliding(enemy)) {
-                    this.character.hit();
-                    this.statusBarEnergy.setPercentage(this.character.energy);
-                }
-            });
-            this.coins.forEach( coin => {
-                if (this.character.isColliding(coin)) {
-                    this.character.collectItem('coinLevel');
-                    this.statusBarCoins.setPercentage(this.character.coinLevel);
-                    this.coins.splice(coin, 1);
-                }
-            });
-            this.poisonBubbles.forEach( pb => {
-                if (this.character.isColliding(pb)) {
-                    this.character.collectItem('poisonBubblesLevel');
-                    this.statusBarPB.setPercentage(this.character.poisonBubblesLevel);
-                    this.poisonBubbles.splice(pb, 1);
-                }
-            })
+            this.checkCollisions();
+            this.checkAttackBubbles();
         }, 200);
+    }
+
+    checkAttackBubbles() {
+        if(this.keyboard.D) {
+            let bubble = new Bubble(this.character.x + 100, this.character.y + 100);
+            this.bubbles.push(bubble);
+        }
+    }
+
+    checkCollisions() {
+        this.level.enemies.forEach( enemy => {
+            if (this.character.isColliding(enemy)) {
+                this.character.hit();
+                this.statusBarEnergy.setPercentage(this.character.energy);
+            }
+        });
+        this.coins.forEach( coin => {
+            if (this.character.isColliding(coin)) {
+                this.character.collectItem('coinLevel');
+                this.statusBarCoins.setPercentage(this.character.coinLevel);
+                this.coins.splice(coin, 1);
+            }
+        });
+        this.poisonBubbles.forEach( pb => {
+            if (this.character.isColliding(pb)) {
+                this.character.collectItem('poisonBubblesLevel');
+                this.statusBarPB.setPercentage(this.character.poisonBubblesLevel);
+                this.poisonBubbles.splice(pb, 1);
+            }
+        })
     }
 
     addCollectableItems(amountOfItems) {
