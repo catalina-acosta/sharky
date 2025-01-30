@@ -14,7 +14,7 @@ class Bubble extends MovableObject {
     bubbleAttack() {
         setInterval(() => {
             this.x += 10;
-            this.y += 1;
+            this.y += 1; 
         }, 20);
     }
 }

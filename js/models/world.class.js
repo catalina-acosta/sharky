@@ -12,16 +12,15 @@ class World {
     statusBarEnergy;
     statusBarPB;
     statusBarCoins;
-    bubbles = []
+    bubbles = [];
+    encounterWithObject = false;
 
     constructor(canvas){
         this.ctx = canvas.getContext('2d');
         this.canvas = canvas;
         this.keyboard = keyboard;
         this.statusBarEnergy = new StatusBar(ImageArray.STATUSBAR_IMAGES);
-        console.log(this.statusBarEnergy);
         this.statusBarPB = new StatusBar(ImageArray.STATUS_PB_IMAGES);
-        console.log(this.statusBarPB);
         this.statusBarCoins = new StatusBar(ImageArray.STATUSBAR_COIN_IMAGES);
         this.statusBarPB.y = 25;
         this.statusBarPB.setPercentage(0);
@@ -64,13 +63,22 @@ class World {
                 this.character.collectItem('coinLevel');
                 this.statusBarCoins.setPercentage(this.character.coinLevel);
                 this.coins.splice(coin, 1);
+                console.log(this.coins);
             }
         });
         this.poisonBubbles.forEach( pb => {
-            if (this.character.isColliding(pb)) {
-                this.character.collectItem('poisonBubblesLevel');
-                this.statusBarPB.setPercentage(this.character.poisonBubblesLevel);
-                this.poisonBubbles.splice(pb, 1);
+            if (this.character.isColliding(pb) && this.encounterWithObject == false) {
+                this.encounterWithObject = true;
+                if (this.encounterWithObject) {
+                    this.poisonBubbles.splice(pb, 1);
+                    this.character.collectItem('poisonBubblesLevel');
+                    console.log(this.encounterWithObject);
+                    this.statusBarPB.setPercentage(this.character.poisonBubblesLevel);
+                    console.log(this.poisonBubbles)
+                    setTimeout(() => {
+                        this.encounterWithObject = false;
+                    }, 1200);
+                }
             }
         })
     }
@@ -121,7 +129,7 @@ class World {
         if (mo.otherDirection) {
             this.flipImageBack(mo)
         }
-        mo.drawFrame(this.ctx);
+        mo.drawFrameOffset(this.ctx);
     }
 
     flipImage(mo) {

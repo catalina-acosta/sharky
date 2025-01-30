@@ -11,6 +11,8 @@ class MovableObject extends DrawableObject {
     lastHit = 0;
     coinLevel = 0;
     poisonBubblesLevel = 0;
+    attackAnimationDone = false;
+    attackCounter = 0;
 
     isColliding(mo) {
         return this.x + this.width - this.offset.right > mo.x + mo.offset.left && 
@@ -45,11 +47,20 @@ class MovableObject extends DrawableObject {
         }
     }
 
-    playAnimation(images) {
+    playAnimation(images, attack = false) {
         let i = this.currentImage % images.length;
         let path =  images[i];
         this.img = this.imageCache[path];
         this.currentImage++;
+        if (attack) {
+            if(this.attackCounter <= images.length && this.attackAnimationDone == false) {
+                this.attackCounter++;
+                if (this.attackCounter == images.length) {
+                    this.attackAnimationDone = true;
+                    this.attackCounter = 0;
+                }
+            }
+        }
     }
 
     moveRight() {

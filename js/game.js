@@ -55,8 +55,7 @@ window.addEventListener('keyup', (event) => {
     }
 
     if (event.code === 'Space') {
-        keyboard.SPACE = false;
-        keyboard.SPACE_SOLVED = false;
+
     }
 
     if (event.code === 'ArrowDown') {
