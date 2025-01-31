@@ -9,6 +9,7 @@ class EndBoss extends MovableObject {
         right: 50
     }
     IMAGES = [];
+    speed = 10;
 
     constructor(world) {
         super();
@@ -25,15 +26,35 @@ class EndBoss extends MovableObject {
 
     animate(){
         setInterval(() => {
-            if (this.attackAnimationDone == false && this.world.character.x >= 700) {
-                this.playAnimation(ImageArray.ENDBOSS_IMAGES_INTRODUCE, true);
-            } else if (this.isDead()) {
+            // if (this.attackAnimationDone == false && this.world.character.x >= 700) {
+            //     this.playAnimation(ImageArray.ENDBOSS_IMAGES_INTRODUCE, true);
+            // } 
+            if (this.world.character.x <= 700 && !this.isDead() && !this.world.character.isDead()) {
+                this.playAnimation(ImageArray.ENDBOSS_IMAGES_ATTACK);
+                this.followCharacter();
+            }
+            else if (this.isDead()) {
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_DEAD);
             } else if (this.isHurt()) {
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_HURT); 
             } else {
-                this.playAnimation(ImageArray.ENDBOSS_IMAGES_FLOATING)
+
             }
         }, 100);
+    }
+    followCharacter() {
+        if (this.x > this.world.character.x) { // moving right
+            this.otherDirection = false;
+            this.x -= this.speed; 
+        } else if (this.x < this.world.character.x) { // moving right
+            this.otherDirection = true;
+            this.x += this.speed; 
+        }
+
+        if (this.y > this.world.character.y) {
+            this.y -= this.speed; 
+        } else if (this.y < this.world.character.y) {
+            this.y += this.speed;
+        }
     }
 }
