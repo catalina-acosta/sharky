@@ -1,5 +1,6 @@
 class World {
     character = new Character();
+    endBoss = new EndBoss(this);
     level = level1;
     enemies = this.level.enemies;
     backgroundObjects = level1.backgroundObjects;
@@ -14,6 +15,7 @@ class World {
     statusBarCoins;
     bubbles = [];
     encounterWithObjectDone = false;
+    isPoisonBubbleUsed = false;
 
     constructor(canvas){
         this.ctx = canvas.getContext('2d');
@@ -22,6 +24,7 @@ class World {
         this.statusBarEnergy = new StatusBar(ImageArray.STATUSBAR_IMAGES);
         this.statusBarPB = new StatusBar(ImageArray.STATUS_PB_IMAGES);
         this.statusBarCoins = new StatusBar(ImageArray.STATUSBAR_COIN_IMAGES);
+        this.statusBarEndboss = new StatusBar(ImageArray.STATUSBAR_IMAGES);
         this.statusBarPB.y = 25;
         this.statusBarPB.setPercentage(0);
         this.statusBarCoins.setPercentage(0);
@@ -45,22 +48,23 @@ class World {
     }
 
     checkAttackBubbles() {
-        if(this.keyboard.D && this.character.poisonBubblesLevel > 0 ) {
+        if(this.keyboard.D && this.character.poisonBubblesLevel > 0 && this.isPoisonBubbleUsed == false ) {
+            this.isPoisonBubbleUsed = true;
             let bubble = new Bubble(this.character.x + 100, this.character.y + 100);
             this.bubbles.push(bubble);
             this.character.useItem('poisonBubblesLevel');
             this.statusBarPB.setPercentage(this.character.poisonBubblesLevel);
             console.log(this.character.poisonBubblesLevel);
-            
         }
+        this.isPoisonBubbleUsed = false;
     }
 
     checkCollisions() {
         this.level.enemies.forEach( enemy => {
             if (this.character.isColliding(enemy)) {
-                this.character.hit();
+                this.character.hit(5);
                 this.statusBarEnergy.setPercentage(this.character.energy);
-            }
+            } 
         });
         this.coins.forEach( (coin, index) => {
             if (this.character.isColliding(coin)) {
@@ -78,8 +82,25 @@ class World {
                 console.log(this.poisonBubbles);
             }
         });
-
+        this.bubbles.forEach(bubble => {
+            this.enemies.forEach((enemy, index) => {
+                if (enemy.isColliding(bubble)) {
+                    this.enemies.splice(index, 1);
+                }
+            })
+        });
+        this.bubbles.forEach(bubble => {
+            if(this.endBoss.isColliding(bubble)) {
+                this.endBoss.hit(20);
+                this.statusBarEndboss.setPercentage(this.endBoss.energy)
+            }
+        })
+        if (this.endBoss.isColliding(this.character)) {
+            this.character.hit(20);
+            this.statusBarEnergy.setPercentage(this.character.energy);
+        }
     }
+
 
     addCollectableItems(amountOfItems) {
         for (let index = 0; index < amountOfItems; index++) {
@@ -105,6 +126,8 @@ class World {
         this.addObjectToMap(this.level.enemies);
         this.addObjectToMap(this.bubbles);
         this.addToMap(this.character);
+        this.addToMap(this.endBoss);
+        this.addToMap(this.statusBarEndboss);
         this.ctx.translate(-this.cameraX, 0); // back
         
         let self = this;

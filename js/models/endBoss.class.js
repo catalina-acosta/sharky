@@ -8,29 +8,32 @@ class EndBoss extends MovableObject {
         left: 50,
         right: 50
     }
-    IMAGES_SWIMING = [
-        'img/2.Enemy/3 Final Enemy/2.floating/1.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/2.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/3.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/4.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/5.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/6.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/7.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/8.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/9.png',
-        'img/2.Enemy/3 Final Enemy/2.floating/10.png',
-    ];
+    IMAGES = [];
 
-    constructor() {
-        super().loadImg(this.IMAGES_SWIMING[0]);
-        this.loadImages(this.IMAGES_SWIMING);
-        this.x = 1700;
+    constructor(world) {
+        super();
+        this.world = world;
+        this.loadImg(ImageArray.ENDBOSS_IMAGES_FLOATING[0]);
+        this.loadImages(ImageArray.ENDBOSS_IMAGES_FLOATING);
+        this.loadImages(ImageArray.ENDBOSS_IMAGES_HURT);
+        this.loadImages(ImageArray.ENDBOSS_IMAGES_ATTACK);
+        this.loadImages(ImageArray.ENDBOSS_IMAGES_DEAD);
+        this.loadImages(ImageArray.ENDBOSS_IMAGES_INTRODUCE);
+        this.x = 1000;
         this.animate();
     }
 
     animate(){
         setInterval(() => {
-            this.playAnimation(this.IMAGES_SWIMING);
+            if (this.attackAnimationDone == false && this.world.character.x >= 700) {
+                this.playAnimation(ImageArray.ENDBOSS_IMAGES_INTRODUCE, true);
+            } else if (this.isDead()) {
+                this.playAnimation(ImageArray.ENDBOSS_IMAGES_DEAD);
+            } else if (this.isHurt()) {
+                this.playAnimation(ImageArray.ENDBOSS_IMAGES_HURT); 
+            } else {
+                this.playAnimation(ImageArray.ENDBOSS_IMAGES_FLOATING)
+            }
         }, 100);
     }
 }

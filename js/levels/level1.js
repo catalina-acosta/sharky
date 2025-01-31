@@ -1,6 +1,5 @@
 const level1 = new Level(
     [
-        new EndBoss(),
         new Enemy("pufferfish", ImageArray.PUFFERFISH_IMAGES_TRANSITION),
         new Enemy("jellyfish", ImageArray.JELLYFISH_IMAGES_REGULAR),
         new Enemy("pufferfish", ImageArray.PUFFERFISH_IMAGES_TRANSITION),
