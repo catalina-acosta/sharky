@@ -13,7 +13,7 @@ function startGame() {
 function init() {
     canvas = document.getElementById("canvas");
     dialogBox = document.getElementById("dialog-container");
-    dialogBox.innerHTML += instructionsTemplate();
+    dialogBox.innerHTML = landingPageTemplate();
 }
 
 function renderInstructions() {

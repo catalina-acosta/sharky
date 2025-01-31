@@ -115,14 +115,16 @@ class World {
     }
 
     renderGameOver(winner) {
-        canvas = document.getElementById("canvas");
-        canvas.classList.add("d-none");
-        dialogBox = document.getElementById("dialog-container");
-        if (winner == "Endboss") {
-            dialogBox.innerHTML = gameLostTemplate();
-        } else {
-            dialogBox.innerHTML = gameWonTemplate();
-        }
+        setTimeout(() => {
+            canvas = document.getElementById("canvas");
+            canvas.classList.add("d-none");
+            dialogBox = document.getElementById("dialog-container");
+            if (winner == "Endboss") {
+                dialogBox.innerHTML = gameLostTemplate();
+            } else {
+                dialogBox.innerHTML = gameWonTemplate();
+            }
+        }, 1000);
     }
 
     addCollectableItems(amountOfItems) {

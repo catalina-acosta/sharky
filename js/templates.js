@@ -1,5 +1,6 @@
 function instructionsTemplate() {
-    return `<div id="instructions" width="720px" height="480px">
+    return `<div id="dialog-box" width="720px" height="480px">
+            <div><button onclick="init()">X</button></div>
             <h2>HOW TO PLAY</h2>
             <div class="key-container">
                 <div class="single-key-container">
@@ -15,21 +16,41 @@ function instructionsTemplate() {
                     <img class="instruction-key" src="img/6.Botones/Key/Space Bar key.png" alt="">
                 </div>
             </div>
-            <button onclick="startGame()"><img src="img/6.Botones/Start/1.png" width="300px" alt=""></button>
+            <button id="img-button" onclick="startGame()"><img src="img/6.Botones/Start/1.png" width="300px" alt=""></button>
         </div>`
 }
 
 
 function gameLostTemplate() {
     return `
-    <div id="instructions">
-            <h1>Congratulations!</h1>
-            <p>You won! The Character defeated the Endboss.</p>
-            <button onclick="startGame()">Play Again</button>
+    <div id="dialog-box">
+            <img src="img/6.Botones/Tittles/Game Over/Recurso 9.png" alt="game over">   
+            <button id="img-button" onclick="startGame()"><img src="img/6.Botones/Try again/Recurso 16.png" alt="game over"></button>
         </div>`
     
 }
 
 function gameWonTemplate() {
-    console.log("you win");
+    return `
+    <div id="dialog-box">
+            <img src="img/6.Botones/Try again/Mesa de trabajo 1.png" alt="game over">   
+            <button id="img-button" onclick="startGame()"><img src="img/6.Botones/Try again/Recurso 16.png" alt="game over"></button>
+        </div>`
+}
+
+function landingPageTemplate() {
+    return `
+            <div id="dialog-box" width="720px" height="480px">
+            <div class="title-box">
+                <div class="title-container">
+                    <h1>Welcome!</h1>
+                    <h2>Help <span>sharky</span> to defet enemies under the sea!</h2>
+                </div>
+                <div class="img-container">
+                    <img src="img/1.Sharkie/1.IDLE/1.png" alt="sharky" width="200px">
+                </div>
+            </div>
+            <button onclick="renderInstructions()">how to play</button>
+            <button id="img-button" onclick="startGame()"><img src="img/6.Botones/Start/1.png" width="300px" alt=""></button>
+        </div>`
 }
