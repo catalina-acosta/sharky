@@ -9,7 +9,7 @@ class EndBoss extends MovableObject {
         right: 50
     }
     IMAGES = [];
-    speed = 10;
+    speed = 5;
 
     constructor(world) {
         super();
@@ -42,6 +42,7 @@ class EndBoss extends MovableObject {
             }
         }, 100);
     }
+    
     followCharacter() {
         if (this.x > this.world.character.x) { // moving right
             this.otherDirection = false;

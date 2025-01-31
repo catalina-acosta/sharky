@@ -3,8 +3,8 @@ let world;
 let keyboard = new Keyboard();
 
 function startGame() {
-    instructionsBox = document.getElementById("instructions-container");
-    instructionsBox.innerHTML = "";
+    dialogBox = document.getElementById("dialog-container");
+    dialogBox.innerHTML = "";
     canvas = document.getElementById("canvas");
     canvas.classList.remove("d-none");
     world = new World(canvas, keyboard);
@@ -12,6 +12,14 @@ function startGame() {
 
 function init() {
     canvas = document.getElementById("canvas");
+    dialogBox = document.getElementById("dialog-container");
+    dialogBox.innerHTML += instructionsTemplate();
+}
+
+function renderInstructions() {
+    dialogBox = document.getElementById("dialog-container");
+    dialogBox.innerHTML = instructionsTemplate();
+
 }
 
 window.addEventListener('keydown', (event) => {
@@ -38,6 +46,7 @@ window.addEventListener('keydown', (event) => {
 
     if (event.code === 'KeyD') {
         keyboard.D = true;
+
     }
 });
 
@@ -63,6 +72,7 @@ window.addEventListener('keyup', (event) => {
     }
 
     if (event.code === 'KeyD') {
-
+        keyboard.D = false;
+        keyboard.D_SOLVED = false;
     }
 });

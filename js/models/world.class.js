@@ -48,8 +48,9 @@ class World {
     }
 
     checkAttackBubbles() {
-        if(this.keyboard.D && this.character.poisonBubblesLevel > 0 && this.isPoisonBubbleUsed == false ) {
+        if(this.keyboard.D && this.keyboard.D_SOLVED == false && this.character.poisonBubblesLevel > 0 && this.isPoisonBubbleUsed == false ) {
             this.isPoisonBubbleUsed = true;
+            this.keyboard.D_SOLVED = true;
             let bubble = new Bubble(this.character.x + 100, this.character.y + 100);
             this.bubbles.push(bubble);
             this.character.useItem('poisonBubblesLevel');
@@ -101,6 +102,28 @@ class World {
         }
     }
 
+    checkGameOver() {
+        if (this.character.isDead()) {
+            let winner = "Endboss";
+            console.log(winner);
+            
+            this.renderGameOver(winner);
+        } else if(this.endBoss.isDead()) {
+            let winner ="Character";
+            this. renderGameOver(winner);
+        }
+    }
+
+    renderGameOver(winner) {
+        canvas = document.getElementById("canvas");
+        canvas.classList.add("d-none");
+        dialogBox = document.getElementById("dialog-container");
+        if (winner == "Endboss") {
+            dialogBox.innerHTML = gameLostTemplate();
+        } else {
+            dialogBox.innerHTML = gameWonTemplate();
+        }
+    }
 
     addCollectableItems(amountOfItems) {
         for (let index = 0; index < amountOfItems; index++) {
@@ -130,6 +153,7 @@ class World {
         this.addToMap(this.statusBarEndboss);
         this.ctx.translate(-this.cameraX, 0); // back
         
+        this.checkGameOver();
         let self = this;
         requestAnimationFrame(function() {
             self.draw();

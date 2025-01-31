@@ -29,6 +29,7 @@ class Character extends MovableObject {
     animate() {
         setInterval(()=>{
             this.swimmingSound.pause();
+            this.swimmingSound.volume = 0.2;
 
             if(this.world.keyboard.RIGHT && this.x <= this.world.level.levelEndX){
                 this.moveRight();
@@ -64,14 +65,12 @@ class Character extends MovableObject {
                     this.attackAnimationDone = false;
                     this.world.keyboard.SPACE = false;
                 }
-                // setTimeout(() => {
-                //     this.isAttacking = false;
-                // }, 1000);
             } 
             else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
                 // swim animation
                 this.playAnimation(ImageArray.CHARACTER_SWIMING);
-            } else if (this.world.keyboard.D && this.attackAnimationDone == false) {
+            } 
+            else if (this.world.keyboard.D && this.attackAnimationDone == false) {
                 this.playAnimation(ImageArray.CHARACTER_ATTACK_BUBBLETRAP, true);
                 if(this.attackAnimationDone) {
                     this.attackAnimationDone = false;

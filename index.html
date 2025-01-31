@@ -22,26 +22,17 @@
     <script src="./js/models/bubble.class.js"></script>
     <script src="./js/game.js"></script>
     <script src="./js/levels/level1.js"></script>
+    <script src="./js/templates.js"></script>
 </head>
 <body onload="init()">
     <h1>sharky</h1>
-    <div id="instructions-container">
+    <div id="dialog-container">
         <div id="instructions" width="720px" height="480px">
-            <h2>HOW TO PLAY</h2>
-            <div class="key-container">
-                <div class="single-key-container">
-                    <h3>move around</h3>
-                    <img width="200px" src="img/6.Botones/Key/arrow keys.png" alt="">
-                </div>
-                <div class="single-key-container">
-                    <h3>attack poison bubble</h3>
-                    <img width="80px" src="img/6.Botones/Key/D key.png" alt="">
-                </div>
-                <div class="single-key-container">
-                    <h3>attack - finslap</h3>
-                    <img class="instruction-key" src="img/6.Botones/Key/Space Bar key.png" alt="">
-                </div>
+            <h2>Help sharky to defet enemies under the sea!</h2>
+            <div class="img-container">
+                <img src="img/1.Sharkie/3.Swim/1.png" alt="sharky" width="200px">
             </div>
+            <button onclick="renderInstructions()">how to play</button>
             <button onclick="startGame()"><img src="img/6.Botones/Start/1.png" width="300px" alt=""></button>
         </div>
     </div>
