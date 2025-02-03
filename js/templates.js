@@ -25,16 +25,16 @@ function gameLostTemplate() {
     return `
     <div id="dialog-box">
             <img src="img/6.Botones/Tittles/Game Over/Recurso 9.png" alt="game over">   
-            <button id="img-button" onclick="startGame()"><img src="img/6.Botones/Try again/Recurso 16.png" alt="game over"></button>
+            <button id="img-button" onclick="init()"><img src="img/6.Botones/Try again/Recurso 16.png" alt="game over"></button>
         </div>`
     
 }
 
 function gameWonTemplate() {
     return `
-    <div id="dialog-box">
+        <div id="dialog-box-winner">
+            <button id="img-button-winner" onclick="init()"><img src="img/6.Botones/Start/1.png" alt="game over"></button>
             <img src="img/6.Botones/Try again/Mesa de trabajo 1.png" alt="game over">   
-            <button id="img-button" onclick="startGame()"><img src="img/6.Botones/Try again/Recurso 16.png" alt="game over"></button>
         </div>`
 }
 

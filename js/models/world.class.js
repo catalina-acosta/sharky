@@ -16,6 +16,7 @@ class World {
     bubbles = [];
     encounterWithObjectDone = false;
     isPoisonBubbleUsed = false;
+    gameOver = false;
 
     constructor(canvas){
         this.ctx = canvas.getContext('2d');
@@ -29,6 +30,7 @@ class World {
         this.statusBarPB.setPercentage(0);
         this.statusBarCoins.setPercentage(0);
         this.statusBarCoins.y = 60;
+        this.statusBarEndboss.x = 500;
         this.draw();
         this.setWorld();
         this.checkCollisions();
@@ -105,12 +107,14 @@ class World {
     checkGameOver() {
         if (this.character.isDead()) {
             let winner = "Endboss";
-            console.log(winner);
+            this.renderGameOver(winner);
+            this.gameOver = true; 
             
             this.renderGameOver(winner);
         } else if(this.endBoss.isDead()) {
             let winner ="Character";
-            this. renderGameOver(winner);
+            this.renderGameOver(winner);
+            this.gameOver = true; 
         }
     }
 
@@ -118,6 +122,8 @@ class World {
         setTimeout(() => {
             canvas = document.getElementById("canvas");
             canvas.classList.add("d-none");
+            let titleRef = document.getElementById("gameTitle");
+            titleRef.classList.add("d-none");
             dialogBox = document.getElementById("dialog-container");
             if (winner == "Endboss") {
                 dialogBox.innerHTML = gameLostTemplate();
@@ -135,6 +141,10 @@ class World {
     }
 
     draw() {
+        if(this.gameOver) {
+            return;
+        }
+        
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.ctx.translate(this.cameraX, 0);
@@ -144,6 +154,7 @@ class World {
         this.addToMap(this.statusBarPB);
         this.addToMap(this.statusBarEnergy);
         this.addToMap(this.statusBarCoins);
+        this.addToMap(this.statusBarEndboss);
         this.ctx.translate(this.cameraX, 0); // forwards
         
         this.addObjectToMap(this.coins);
@@ -152,7 +163,6 @@ class World {
         this.addObjectToMap(this.bubbles);
         this.addToMap(this.character);
         this.addToMap(this.endBoss);
-        this.addToMap(this.statusBarEndboss);
         this.ctx.translate(-this.cameraX, 0); // back
         
         this.checkGameOver();
