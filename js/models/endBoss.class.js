@@ -23,38 +23,30 @@ class EndBoss extends MovableObject {
         this.loadImages(ImageArray.ENDBOSS_IMAGES_INTRODUCE);
         this.x = 1500;
         this.animate();
+        this.i = 0;
     }
 
     animate(){
-        let i = 0;
         setInterval(() => {
-            const distanceToCharacter = Math.abs(this.x - this.world.character.x);
-            if(i < 8 && distanceToCharacter <= 500 ) {
+            const distanceToCharacter = Math.abs(this.x - this.world.character.x);        
+            if(distanceToCharacter <= 500 && this.i < 8 && !this.hadFirstContact) {
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_INTRODUCE);
-            } else if (distanceToCharacter > 500){
-
-            }
-
-            else {
-                if (distanceToCharacter <= 350) {
-                    this.playAnimation(ImageArray.ENDBOSS_IMAGES_ATTACK);
-                    this.followCharacter();
-                } else if (this.isDead()) {
-                    this.playAnimation(ImageArray.ENDBOSS_IMAGES_DEAD);
-                } 
-                else if (this.isHurt()) {
-                        this.playAnimation(ImageArray.ENDBOSS_IMAGES_HURT); 
-                    } 
-                else {
-                    this.playAnimation(ImageArray.ENDBOSS_IMAGES_FLOATING);
-                }
-            }
-            i++;
-
-            if(this.world.character.x > 1500 && !this.hadFirstContact) {
-                i = 0;
+                console.log(this.i);
+                this.i ++;
+            } else if ( this.i == 8 && distanceToCharacter > 500){
                 this.hadFirstContact = true;
+                this.playAnimation(ImageArray.ENDBOSS_IMAGES_FLOATING);
+            } else if (distanceToCharacter <= 350) {
+                this.playAnimation(ImageArray.ENDBOSS_IMAGES_ATTACK);
+                this.followCharacter();
             }
+            else if (this.isDead()) {
+                this.playAnimation(ImageArray.ENDBOSS_IMAGES_DEAD);
+            } 
+            else if (this.isHurt()) {
+                    this.playAnimation(ImageArray.ENDBOSS_IMAGES_HURT); 
+                } 
+            
         }, 150);
     }
     
