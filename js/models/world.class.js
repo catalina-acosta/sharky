@@ -53,7 +53,7 @@ class World {
         if(this.keyboard.D && this.keyboard.D_SOLVED == false && this.character.poisonBubblesLevel > 0 && this.isPoisonBubbleUsed == false ) {
             this.isPoisonBubbleUsed = true;
             this.keyboard.D_SOLVED = true;
-            let bubble = new Bubble(this.character.x + 100, this.character.y + 100);
+            let bubble = new Bubble(this.character.x + 100, this.character.y + 100, this.character.otherDirection);
             this.bubbles.push(bubble);
             this.character.useItem('poisonBubblesLevel');
             this.statusBarPB.setPercentage(this.character.poisonBubblesLevel);
@@ -144,7 +144,7 @@ class World {
         if(this.gameOver) {
             return;
         }
-        
+
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
 
         this.ctx.translate(this.cameraX, 0);
