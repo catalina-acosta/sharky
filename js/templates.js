@@ -1,5 +1,5 @@
 function instructionsTemplate() {
-    return `<div id="dialog-box" width="720px" height="480px">
+    return `<div id="dialog-box" width="760px" height="480px">
             <div><button onclick="init()">X</button></div>
             <h2>HOW TO PLAY</h2>
             <div class="key-container">
@@ -16,7 +16,7 @@ function instructionsTemplate() {
                     <img class="instruction-key" src="img/6.Botones/Key/Space Bar key.png" alt="">
                 </div>
             </div>
-            <button id="img-button" onclick="startGame()"><img src="img/6.Botones/Start/1.png" width="300px" alt=""></button>
+            <button id="img-button" onclick="startGame(), initLevel()"><img src="img/6.Botones/Start/1.png" width="300px" alt=""></button>
         </div>`
 }
 
@@ -44,7 +44,7 @@ function landingPageTemplate() {
             <div class="title-box">
                 <div class="title-container">
                     <h1>Welcome!</h1>
-                    <h2>Help <span>sharky</span> to defet enemies under the sea!</h2>
+                    <h2>Help <span>sharky</span> defet enemies under the sea!</h2>
                 </div>
                 <div class="img-container">
                     <img src="img/1.Sharkie/1.IDLE/1.png" alt="sharky" width="200px">

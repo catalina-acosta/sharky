@@ -61,6 +61,7 @@ class Character extends MovableObject {
             } 
             else if (this.world.keyboard.SPACE && this.attackAnimationDone == false) {
                 this.playAnimation(ImageArray.CHARACTER_ATTACK_FINSLAP, true);
+                this.isAttacking = true;
                 if(this.attackAnimationDone) {
                     this.attackAnimationDone = false;
                     this.world.keyboard.SPACE = false;

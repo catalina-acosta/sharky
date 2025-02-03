@@ -55,6 +55,7 @@ class World {
             this.keyboard.D_SOLVED = true;
             let bubble = new Bubble(this.character.x + 100, this.character.y + 100, this.character.otherDirection);
             this.bubbles.push(bubble);
+            console.log(this.bubbles);
             this.character.useItem('poisonBubblesLevel');
             this.statusBarPB.setPercentage(this.character.poisonBubblesLevel);
             console.log(this.character.poisonBubblesLevel);
@@ -63,11 +64,15 @@ class World {
     }
 
     checkCollisions() {
-        this.level.enemies.forEach( enemy => {
-            if (this.character.isColliding(enemy)) {
+        this.level.enemies.forEach( (enemy, index) => {
+            if (this.character.isColliding(enemy) && this.keyboard.SPACE && this.character.isAttacking == true ) {
+                setTimeout(() => {
+                }, 1000);
+                this.enemies.splice(index, 1);
+            } else if(this.character.isColliding(enemy)) {
                 this.character.hit(5);
                 this.statusBarEnergy.setPercentage(this.character.energy);
-            } 
+            }
         });
         this.coins.forEach( (coin, index) => {
             if (this.character.isColliding(coin)) {
@@ -80,9 +85,7 @@ class World {
             if (this.character.isColliding(pb)) {
                 this.character.collectItem('poisonBubblesLevel');
                 this.statusBarPB.setPercentage(this.character.poisonBubblesLevel);
-                console.log(this.character.poisonBubblesLevel);
                 this.poisonBubbles.splice(index, 1);
-                console.log(this.poisonBubbles);
             }
         });
         this.bubbles.forEach(bubble => {
@@ -94,8 +97,13 @@ class World {
         });
         this.bubbles.forEach(bubble => {
             if(this.endBoss.isColliding(bubble)) {
-                this.endBoss.hit(20);
-                this.statusBarEndboss.setPercentage(this.endBoss.energy)
+                if (this.endBoss.energy <= 0) {
+                    // this.endBoss.playAnimation(ImageArray.ENDBOSS_IMAGES_DEAD);
+                } else {
+                    this.bubbles.splice(bubble, 1);
+                    this.endBoss.hit(20);
+                    this.statusBarEndboss.setPercentage(this.endBoss.energy);
+                }
             }
         })
         if (this.endBoss.isColliding(this.character)) {
@@ -107,30 +115,33 @@ class World {
     checkGameOver() {
         if (this.character.isDead()) {
             let winner = "Endboss";
-            this.renderGameOver(winner);
-            this.gameOver = true; 
+            setTimeout(() => {
+                console.log(winner);
+                this.renderGameOver(winner);
+                this.gameOver = true; 
+            }, 1000);
             
-            this.renderGameOver(winner);
         } else if(this.endBoss.isDead()) {
             let winner ="Character";
-            this.renderGameOver(winner);
-            this.gameOver = true; 
+            setTimeout(() => {
+                console.log(winner);
+                this.renderGameOver(winner);
+                this.gameOver = true; 
+            }, 1000);
         }
     }
 
     renderGameOver(winner) {
-        setTimeout(() => {
-            canvas = document.getElementById("canvas");
-            canvas.classList.add("d-none");
-            let titleRef = document.getElementById("gameTitle");
-            titleRef.classList.add("d-none");
-            dialogBox = document.getElementById("dialog-container");
-            if (winner == "Endboss") {
-                dialogBox.innerHTML = gameLostTemplate();
-            } else {
-                dialogBox.innerHTML = gameWonTemplate();
-            }
-        }, 1000);
+        canvas = document.getElementById("canvas");
+        canvas.classList.add("d-none");
+        let titleRef = document.getElementById("gameTitle");
+        titleRef.classList.add("d-none");
+        dialogBox = document.getElementById("dialog-container");
+        if (winner == "Endboss") {
+            dialogBox.innerHTML = gameLostTemplate();
+        } else {
+            dialogBox.innerHTML = gameWonTemplate();
+        }
     }
 
     addCollectableItems(amountOfItems) {
@@ -162,7 +173,9 @@ class World {
         this.addObjectToMap(this.level.enemies);
         this.addObjectToMap(this.bubbles);
         this.addToMap(this.character);
+
         this.addToMap(this.endBoss);
+
         this.ctx.translate(-this.cameraX, 0); // back
         
         this.checkGameOver();

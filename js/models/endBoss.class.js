@@ -9,7 +9,8 @@ class EndBoss extends MovableObject {
         right: 50
     }
     IMAGES = [];
-    speed = 5;
+    speed = 8;
+    hadFirstContact = false;
 
     constructor(world) {
         super();
@@ -20,34 +21,48 @@ class EndBoss extends MovableObject {
         this.loadImages(ImageArray.ENDBOSS_IMAGES_ATTACK);
         this.loadImages(ImageArray.ENDBOSS_IMAGES_DEAD);
         this.loadImages(ImageArray.ENDBOSS_IMAGES_INTRODUCE);
-        this.x = 1000;
+        this.x = 1500;
         this.animate();
     }
 
     animate(){
+        let i = 0;
         setInterval(() => {
-            // if (this.attackAnimationDone == false && this.world.character.x >= 700) {
-            //     this.playAnimation(ImageArray.ENDBOSS_IMAGES_INTRODUCE, true);
-            // } 
-            if (this.world.character.x <= 700 && !this.isDead() && !this.world.character.isDead()) {
-                this.playAnimation(ImageArray.ENDBOSS_IMAGES_ATTACK);
-                this.followCharacter();
-            }
-            else if (this.isDead()) {
-                this.playAnimation(ImageArray.ENDBOSS_IMAGES_DEAD);
-            } else if (this.isHurt()) {
-                this.playAnimation(ImageArray.ENDBOSS_IMAGES_HURT); 
-            } else {
+            const distanceToCharacter = Math.abs(this.x - this.world.character.x);
+            if(i < 8 && distanceToCharacter <= 500 ) {
+                this.playAnimation(ImageArray.ENDBOSS_IMAGES_INTRODUCE);
+            } else if (distanceToCharacter > 500){
 
             }
-        }, 100);
+
+            else {
+                if (distanceToCharacter <= 350) {
+                    this.playAnimation(ImageArray.ENDBOSS_IMAGES_ATTACK);
+                    this.followCharacter();
+                } else if (this.isDead()) {
+                    this.playAnimation(ImageArray.ENDBOSS_IMAGES_DEAD);
+                } 
+                else if (this.isHurt()) {
+                        this.playAnimation(ImageArray.ENDBOSS_IMAGES_HURT); 
+                    } 
+                else {
+                    this.playAnimation(ImageArray.ENDBOSS_IMAGES_FLOATING);
+                }
+            }
+            i++;
+
+            if(this.world.character.x > 1500 && !this.hadFirstContact) {
+                i = 0;
+                this.hadFirstContact = true;
+            }
+        }, 150);
     }
     
     followCharacter() {
-        if (this.x > this.world.character.x) { // moving right
+        if (this.x > this.world.character.x) { // moving rigth
             this.otherDirection = false;
             this.x -= this.speed; 
-        } else if (this.x < this.world.character.x) { // moving right
+        } else if (this.x < this.world.character.x) { // moving left
             this.otherDirection = true;
             this.x += this.speed; 
         }

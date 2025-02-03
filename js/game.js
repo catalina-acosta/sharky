@@ -5,6 +5,7 @@ let keyboard = new Keyboard();
 function startGame() {
     dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = "";
+    initLevel();
     canvas = document.getElementById("canvas");
     canvas.classList.remove("d-none");
     world = new World(canvas, keyboard);

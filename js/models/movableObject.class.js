@@ -67,7 +67,7 @@ class MovableObject extends DrawableObject {
                     this.attackCounter = 0;
                 }
             }
-        }
+        } 
     }
 
     moveRight() {
