@@ -1,0 +1,10 @@
+{
+    "source": {
+        "include": ["js/models/coin.class.js",
+                    "js/models/movableObject.class.js"
+                    ]
+    },
+    "opts": {
+        "destination": "./out"
+    }
+}
