@@ -12,10 +12,14 @@ function startGame() {
 }
 
 function init() {
+    if (world) {
+        world.stopGame(); // Stop the game and set this.gameOver to true
+    }
     canvas = document.getElementById("canvas");
     canvas.classList.add("d-none");
     dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = landingPageTemplate();
+    
 }
 
 function renderInstructions() {

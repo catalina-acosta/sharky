@@ -108,6 +108,10 @@ class World {
         }
     }
 
+    stopGame() {
+        this.gameOver = true;
+    }
+
     checkGameOver() {
         if (this.character.isDead()) {
             let winner = "Endboss";

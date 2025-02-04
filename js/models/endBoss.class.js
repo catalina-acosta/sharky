@@ -1,7 +1,7 @@
 class EndBoss extends MovableObject {
     height = 400;
     width = 400;
-    y = 0;
+    y = -350;
     offset = {
         top: 100,
         bottom: 30,
@@ -29,11 +29,8 @@ class EndBoss extends MovableObject {
     animate(){
         setInterval(() => {
             const distanceToCharacter = Math.abs(this.x - this.world.character.x);   
-            console.log(distanceToCharacter);
-            if (distanceToCharacter > 500 && !this.hadFirstContact) { // endboss should not be seen before introduce
-                return;
-            }    
             if(distanceToCharacter <= 500 && this.i < 8 && !this.hadFirstContact) {
+                this.y = 0;
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_INTRODUCE);
                 this.i ++;
             } else if ( this.i == 8 && distanceToCharacter < 500 && distanceToCharacter > 350 ){

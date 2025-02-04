@@ -42,6 +42,10 @@ canvas {
     background-color: black;
     border: 12px solid #2f2771;
     border-radius: 8px;
+    /* display: block; */
+}
+
+#dialog-container {
     display: block;
 }
 
@@ -159,6 +163,15 @@ button:hover {
     z-index: 10;
 }
 
+.buttons-container {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: right;
+    margin-top: 18px;
+    align-items: flex-start;
+}
+
 #navigation {
     display: flex;
     margin-top: 24px;
@@ -166,13 +179,7 @@ button:hover {
 }
 
 #buttonsMobile {
-    position: fixed;
-    bottom: 24%;
-    left: 14%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 16px;
+    display: none;
 }
 
 #spaceKey{
@@ -186,6 +193,7 @@ button:hover {
 #buttonsMobile i {
     font-size: 36px;
     color: white;
+
 }
 
 .arrow-btns {
@@ -215,15 +223,43 @@ button:hover {
     scale: 1.1;
 }
 
+
 /* Smartphones ------------*/
 @media only screen and (max-width: 760px) {
     canvas {
         width: 100%;
+        border: none;
+    }
+}
+
+@media (hover: none) and (orientation: portrait) {
+    #buttonsMobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+    .buttons-container {
+
+    }
+}
+
+@media (hover: none) and (orientation: landscape) {
+    #buttonsMobile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 16px;
+    }
+    #gameTitle {
+        display: none;
     }
 }
 
 @media only screen and (max-height: 480px) {
     canvas {
         height: 100vh;
+        border: none;
     }
 }
+

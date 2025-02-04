@@ -12,7 +12,6 @@
     <script src="./js/models/statusBar.class.js"></script>
     <script src="./js/models/character.class.js"></script>
     <script src="./js/models/enemy.class.js"></script>
-    <script src="./js/models/light.class.js"></script>
     <script src="./js/models/level.class.js"></script>
     <script src="./js/models/endBoss.class.js"></script>
     <script src="./js/models/background-object.class.js"></script>
@@ -31,30 +30,32 @@
     </div>
     <canvas width="720px" height="480px" id="canvas" class="d-none">
     </canvas>
-    <div id="buttonsMobile" class="d-none">
-        <div class="arrow-btns">
-            <div>
-                <i class="fa-solid fa-circle-up"></i>
+    <div class="buttons-container" >
+        <div id="buttonsMobile">
+            <div class="arrow-btns">
+                <div>
+                    <i class="fa-solid fa-circle-up"></i>
+                </div>
+                <div class="left-right-btns">
+                    <i class="fa-solid fa-circle-left"></i>
+                    <i class="fa-solid fa-circle-right"></i>
+                </div>
+                <div>
+                    <i class="fa-solid fa-circle-down"></i>
+                </div>
             </div>
-            <div class="left-right-btns">
-                <i class="fa-solid fa-circle-left"></i>
-                <i class="fa-solid fa-circle-right"></i>
-            </div>
-            <div>
-                <i class="fa-solid fa-circle-down"></i>
+            <div class="attack-btns">
+                <button id="img-button"><img id="dKey" src="img/6.Botones/Key/D key.png" alt=""></button>
+                <button id="img-button"><img id="spaceKey" src="img/6.Botones/Key/Space Bar key.png" alt=""></button>
             </div>
         </div>
-        <div class="attack-btns">
-            <button id="img-button"><img id="dKey" src="img/6.Botones/Key/D key.png" alt=""></button>
-            <button id="img-button"><img id="spaceKey" src="img/6.Botones/Key/Space Bar key.png" alt=""></button>
+        <div id="navigation">
+            <i class="fa-regular fa-circle-play" onclick="startGame()"></i>
+            <i class="fa-solid fa-house" onclick="init()"></i>
+            <i class="fa-solid fa-expand"></i>
+            <i class="fa-solid fa-volume-high"></i>
+            <!-- <i class="fa-solid fa-volume-off d-none"></i> -->
         </div>
-    </div>
-    <div id="navigation">
-        <i class="fa-regular fa-circle-play" onclick="startGame()"></i>
-        <i class="fa-solid fa-house" onclick="init()"></i>
-        <i class="fa-solid fa-expand"></i>
-        <i class="fa-solid fa-volume-high"></i>
-        <!-- <i class="fa-solid fa-volume-off d-none"></i> -->
     </div>
 </body>
 </html>
