@@ -35,6 +35,23 @@ class ImageArray {
         'img/4. Marcadores/Purple/100__1.png'
     ]
 
+    static CHARACTER_LONG_IDLE = [
+        'img/1.Sharkie/2.Long_IDLE/i1.png',
+        'img/1.Sharkie/2.Long_IDLE/I2.png',
+        'img/1.Sharkie/2.Long_IDLE/I3.png',
+        'img/1.Sharkie/2.Long_IDLE/I4.png',
+        'img/1.Sharkie/2.Long_IDLE/I5.png',
+        'img/1.Sharkie/2.Long_IDLE/I6.png',
+        'img/1.Sharkie/2.Long_IDLE/I7.png',
+        'img/1.Sharkie/2.Long_IDLE/I8.png',
+        'img/1.Sharkie/2.Long_IDLE/I9.png',
+        'img/1.Sharkie/2.Long_IDLE/I10.png',
+        'img/1.Sharkie/2.Long_IDLE/I11.png',
+        'img/1.Sharkie/2.Long_IDLE/I12.png',
+        'img/1.Sharkie/2.Long_IDLE/I13.png',
+        'img/1.Sharkie/2.Long_IDLE/I14.png',
+    ]
+
     static CHARACTER_IDLE = [
         'img/1.Sharkie/1.IDLE/1.png',
         'img/1.Sharkie/1.IDLE/2.png',

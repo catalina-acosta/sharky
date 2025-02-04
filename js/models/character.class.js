@@ -5,7 +5,9 @@ class Character extends MovableObject {
     world;
     isAttacking = false;
     swimmingSound = new Audio('../audio/swiming.mp3');
-
+    inactivityTimer;
+    inactivityDuration = 15000;
+    isLongIdle = false; // attribute to check if lonIdle should be played
 
     offset = {
         top: 90,
@@ -22,8 +24,10 @@ class Character extends MovableObject {
         this.loadImages(ImageArray.CHARACTER_DEAD);
         this.loadImages(ImageArray.CHARACTER_HURT);
         this.loadImages(ImageArray.CHARACTER_IDLE);
+        this.loadImages(ImageArray.CHARACTER_LONG_IDLE);
 
         this.animate();
+        this.setupInactivityListener();
     }
 
     animate() {
@@ -54,6 +58,11 @@ class Character extends MovableObject {
         }, 1000 / 60);
 
         setInterval(() => {
+            if (this.isLongIdle) {
+                this.playAnimation(ImageArray.CHARACTER_LONG_IDLE);
+                return; // if longIdle is true, break and do go to other animations
+            }
+
             if (this.isDead()) {
                 this.playAnimation(ImageArray.CHARACTER_DEAD);
             } else if (this.isHurt()) {
@@ -68,7 +77,6 @@ class Character extends MovableObject {
                 }
             } 
             else if (this.world.keyboard.RIGHT || this.world.keyboard.LEFT || this.world.keyboard.UP || this.world.keyboard.DOWN) {
-                // swim animation
                 this.playAnimation(ImageArray.CHARACTER_SWIMING);
             } 
             else if (this.world.keyboard.D && this.attackAnimationDone == false) {
@@ -83,4 +91,21 @@ class Character extends MovableObject {
             
         }, 100);
     }
+
+    setupInactivityListener() {
+        window.addEventListener('keydown', () => { // listens when there is a keydown
+            this.resetInactivityTimer(); // resets the timer when a key is pressed 
+        });
+
+        this.resetInactivityTimer(); // initial reset of the timer
+    }
+
+    resetInactivityTimer() {
+        clearTimeout(this.inactivityTimer); // stops the timeout
+        this.isLongIdle = false; // set to false, so that other animations can take place
+        this.inactivityTimer = setTimeout(() => {
+            this.isLongIdle = true; 
+        }, this.inactivityDuration); // if the inactivity lasts 5 seconds, isLongIdle ist set to true
+    }
+
 }

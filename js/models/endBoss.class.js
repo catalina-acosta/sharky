@@ -46,7 +46,6 @@ class EndBoss extends MovableObject {
             else if (this.isHurt()) {
                     this.playAnimation(ImageArray.ENDBOSS_IMAGES_HURT); 
                 } 
-            
         }, 150);
     }
     
