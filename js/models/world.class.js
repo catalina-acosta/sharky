@@ -97,13 +97,9 @@ class World {
         });
         this.bubbles.forEach(bubble => {
             if(this.endBoss.isColliding(bubble)) {
-                if (this.endBoss.energy <= 0) {
-                    // this.endBoss.playAnimation(ImageArray.ENDBOSS_IMAGES_DEAD);
-                } else {
-                    this.bubbles.splice(bubble, 1);
-                    this.endBoss.hit(20);
-                    this.statusBarEndboss.setPercentage(this.endBoss.energy);
-                }
+                this.bubbles.splice(bubble, 1);
+                this.endBoss.hit(20);
+                this.statusBarEndboss.setPercentage(this.endBoss.energy);
             }
         })
         if (this.endBoss.isColliding(this.character)) {

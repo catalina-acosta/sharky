@@ -33,7 +33,7 @@ class EndBoss extends MovableObject {
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_INTRODUCE);
                 console.log(this.i);
                 this.i ++;
-            } else if ( this.i == 8 && distanceToCharacter > 500){
+            } else if ( this.i == 8 && distanceToCharacter < 500 && distanceToCharacter > 350 ){
                 this.hadFirstContact = true;
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_FLOATING);
             } else if (distanceToCharacter <= 350) {
