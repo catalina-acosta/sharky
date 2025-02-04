@@ -8,7 +8,7 @@ class Coin extends MovableObject {
     iscollected = false;
 
     /**
-     * 
+     * set x y for 
      */
     constructor() { // wie soll man hier den constructor doocumentieren? Keine attributen in den Klammern aber oben gelistet
         super().loadImg('img/4. Marcadores/1. Coins/3.png');

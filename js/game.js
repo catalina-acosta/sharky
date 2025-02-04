@@ -13,6 +13,7 @@ function startGame() {
 
 function init() {
     canvas = document.getElementById("canvas");
+    canvas.classList.add("d-none");
     dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = landingPageTemplate();
 }

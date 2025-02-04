@@ -23,17 +23,38 @@
     <script src="./js/game.js"></script>
     <script src="./js/levels/level1.js"></script>
     <script src="./js/templates.js"></script>
+    <script src="https://kit.fontawesome.com/c76ec36ccc.js" crossorigin="anonymous"></script>
 </head>
 <body onload="init()">
     <h1 id="gameTitle">sharky</h1>
     <div id="dialog-container">
-        <div id="dialog-box-winner">
-            <button id="img-button-winner" onclick="startGame()"><img src="img/6.Botones/Start/1.png" alt="game over"></button>
-            <img src="img/6.Botones/Try again/Mesa de trabajo 1.png" alt="game over">   
-        </div>
     </div>
     <canvas width="720px" height="480px" id="canvas" class="d-none">
-
     </canvas>
+    <div id="buttonsMobile" class="d-none">
+        <div class="arrow-btns">
+            <div>
+                <i class="fa-solid fa-circle-up"></i>
+            </div>
+            <div class="left-right-btns">
+                <i class="fa-solid fa-circle-left"></i>
+                <i class="fa-solid fa-circle-right"></i>
+            </div>
+            <div>
+                <i class="fa-solid fa-circle-down"></i>
+            </div>
+        </div>
+        <div class="attack-btns">
+            <button id="img-button"><img id="dKey" src="img/6.Botones/Key/D key.png" alt=""></button>
+            <button id="img-button"><img id="spaceKey" src="img/6.Botones/Key/Space Bar key.png" alt=""></button>
+        </div>
+    </div>
+    <div id="navigation">
+        <i class="fa-regular fa-circle-play" onclick="startGame()"></i>
+        <i class="fa-solid fa-house" onclick="init()"></i>
+        <i class="fa-solid fa-expand"></i>
+        <i class="fa-solid fa-volume-high"></i>
+        <!-- <i class="fa-solid fa-volume-off d-none"></i> -->
+    </div>
 </body>
 </html>

@@ -112,7 +112,6 @@ class World {
         if (this.character.isDead()) {
             let winner = "Endboss";
             setTimeout(() => {
-                console.log(winner);
                 this.renderGameOver(winner);
                 this.gameOver = true; 
             }, 1000);
@@ -120,7 +119,6 @@ class World {
         } else if(this.endBoss.isDead()) {
             let winner ="Character";
             setTimeout(() => {
-                console.log(winner);
                 this.renderGameOver(winner);
                 this.gameOver = true; 
             }, 1000);

@@ -28,10 +28,13 @@ class EndBoss extends MovableObject {
 
     animate(){
         setInterval(() => {
-            const distanceToCharacter = Math.abs(this.x - this.world.character.x);        
+            const distanceToCharacter = Math.abs(this.x - this.world.character.x);   
+            console.log(distanceToCharacter);
+            if (distanceToCharacter > 500 && !this.hadFirstContact) { // endboss should not be seen before introduce
+                return;
+            }    
             if(distanceToCharacter <= 500 && this.i < 8 && !this.hadFirstContact) {
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_INTRODUCE);
-                console.log(this.i);
                 this.i ++;
             } else if ( this.i == 8 && distanceToCharacter < 500 && distanceToCharacter > 350 ){
                 this.hadFirstContact = true;
