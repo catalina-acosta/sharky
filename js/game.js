@@ -22,7 +22,7 @@ function init() {
     canvas = document.getElementById("canvas");
     canvas.classList.add("d-none");
     dialogBox = document.getElementById("dialog-container");
-    dialogBox.innerHTML = landingPageTemplate();
+    dialogBox.innerHTML = landingPageTemplate() ;
     let musicIconRef = document.getElementById("musicIncons");
     musicIconRef.innerHTML = musicOnTemplate();
 }
