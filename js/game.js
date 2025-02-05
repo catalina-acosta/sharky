@@ -4,8 +4,18 @@ let keyboard = new Keyboard();
 let musicIconRef = document.getElementById("musicIncons");
 AudioLibrary.SOUNDTRACK.volume = 0.1;
 
+function restartGame() {
+    console.log("staring game again");
+    
+    clearAllIntervals();
+    init();
+}
+
+function clearAllIntervals() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
+}
+
 function startGame() {
-    clearAllIntervals()
     dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = "";
     initLevel();
@@ -13,8 +23,8 @@ function startGame() {
     canvas.classList.remove("d-none");
     world = new World(canvas, keyboard);
     AudioLibrary.SOUNDTRACK.play();
-    
 }
+
 
 function init() {
     canvas = document.getElementById("canvas");
@@ -27,6 +37,8 @@ function init() {
 
 function stopSound() {
     AudioLibrary.stopAll();
+    console.log("all sounds stopped");
+    
     let musicIconRef = document.getElementById("musicIncons");
     musicIconRef.innerHTML = musicOffTemplate();
 }
@@ -43,9 +55,6 @@ function renderInstructions() {
 
 }
 
-function clearAllIntervals() {
-    for (let i = 1; i < 9999; i++) window.clearInterval(i);
-}
 
 window.addEventListener('keydown', (event) => {
     if (event.code === 'ArrowRight') {

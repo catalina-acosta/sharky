@@ -26,7 +26,7 @@ function gameLostTemplate() {
         <div class="game-over-box">
             <div class="game-over-content">
                 <img id="gameOverImg" src="img/6.Botones/Tittles/Game Over/Recurso 9.png" alt="game over">   
-                <button id="tryAgainButton" onclick="init()"><img src="img/6.Botones/Try again/Recurso 16.png" alt="game over"></button>
+                <button id="tryAgainButton" onclick="restartGame()"><img src="img/6.Botones/Try again/Recurso 16.png" alt="game over"></button>
             <div>
         </div>`
     
@@ -37,7 +37,7 @@ function gameWonTemplate() {
         <div class="game-over-box">
             <div class="game-won-content">
                 <img id="winningImg"src="img/6.Botones/Try again/Mesa de trabajo 1.png" alt="game over">   
-                <button id="imgButtonWinner" onclick="init()"><img src="img/6.Botones/Start/1.png" alt="game over"></button>
+                <button id="imgButtonWinner" onclick="restartGame()"><img src="img/6.Botones/Start/1.png" alt="game over"></button>
             <div>
         </div>`
 }

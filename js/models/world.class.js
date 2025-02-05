@@ -17,6 +17,7 @@ class World {
     encounterWithObjectDone = false;
     isPoisonBubbleUsed = false;
     gameOver = false;
+    areAllSoundsPause = false;
 
     constructor(canvas){
         this.ctx = canvas.getContext('2d');
@@ -107,7 +108,6 @@ class World {
     }
 
     checkGameOver() {
-        console.log("checking game status");
         if (this.character.isDead()) {
             let winner = "Endboss";
             setTimeout(() => {
