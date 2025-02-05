@@ -6,6 +6,7 @@
     <title>Sharky</title>
     <link rel="stylesheet" href="./style.css">
     <script src="./js/models/image-array.class.js"></script>
+    <script src="./js/models/audio-library.class.js"></script>
     <script src="./js/models/world.class.js"></script>
     <script src="./js/models/drawableObject.class.js"></script>
     <script src="./js/models/movableObject.class.js"></script>
@@ -49,12 +50,11 @@
                 <button id="img-button"><img id="spaceKey" src="img/6.Botones/Key/Space Bar key.png" alt=""></button>
             </div>
         </div>
-        <div id="navigation">
+        <div class="navigation">
             <i class="fa-regular fa-circle-play" onclick="startGame()"></i>
             <i class="fa-solid fa-house" onclick="init()"></i>
             <i class="fa-solid fa-expand"></i>
-            <i class="fa-solid fa-volume-high"></i>
-            <!-- <i class="fa-solid fa-volume-off d-none"></i> -->
+            <div id="musicIncons"></div>
         </div>
     </div>
 </body>

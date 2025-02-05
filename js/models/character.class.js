@@ -4,7 +4,6 @@ class Character extends MovableObject {
     IMAGES = [];
     world;
     isAttacking = false;
-    swimmingSound = new Audio('../audio/swiming.mp3');
     inactivityTimer;
     inactivityDuration = 15000;
     isLongIdle = false; // attribute to check if lonIdle should be played
@@ -32,26 +31,28 @@ class Character extends MovableObject {
 
     animate() {
         setInterval(()=>{
-            this.swimmingSound.pause();
-            this.swimmingSound.volume = 0.2;
+            AudioLibrary.SWIMMING.pause();
+            AudioLibrary.SWIMMING.volume = 0.2;
+            AudioLibrary.DAMAGE.playbackRate = 0.5;
+            AudioLibrary.DAMAGE.volume = 0.2;
 
             if(this.world.keyboard.RIGHT && this.x <= this.world.level.levelEndX){
                 this.moveRight();
-                this.swimmingSound.play();
+                AudioLibrary.SWIMMING.play();
             } else if(this.world.keyboard.LEFT && this.x > this.world.level.levelBeginX){
-                this.swimmingSound.play();
+                AudioLibrary.SWIMMING.play();
                 this.moveLeft();
                 this.otherDirection = true;
             }
 
             if(this.world.keyboard.UP && this.y > -90){
                 this.moveUp();
-                this.swimmingSound.play();
+                AudioLibrary.SWIMMING.play();
             }
 
             if(this.world.keyboard.DOWN && this.y < 320){
                 this.moveDown();
-                this.swimmingSound.play();
+                AudioLibrary.SWIMMING.play();
             }
 
             this.world.cameraX = -this.x + 50;
@@ -67,6 +68,7 @@ class Character extends MovableObject {
                 this.playAnimation(ImageArray.CHARACTER_DEAD);
             } else if (this.isHurt()) {
                 this.playAnimation(ImageArray.CHARACTER_HURT); 
+                AudioLibrary.DAMAGE.play();
             } 
             else if (this.world.keyboard.SPACE && this.attackAnimationDone == false) {
                 this.playAnimation(ImageArray.CHARACTER_ATTACK_FINSLAP, true);

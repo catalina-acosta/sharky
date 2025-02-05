@@ -172,7 +172,7 @@ button:hover {
     align-items: flex-start;
 }
 
-#navigation {
+.navigation {   
     display: flex;
     margin-top: 24px;
     gap: 24px;
@@ -213,12 +213,12 @@ button:hover {
     justify-content: space-between;
 }
 
-#navigation i {
+.navigation i {
     font-size: 36px;
     color: white;
 }
 
-#navigation i:hover {
+.navigation i:hover {
     cursor: pointer;
     scale: 1.1;
 }

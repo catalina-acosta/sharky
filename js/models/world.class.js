@@ -55,10 +55,8 @@ class World {
             this.keyboard.D_SOLVED = true;
             let bubble = new Bubble(this.character.x + 100, this.character.y + 100, this.character.otherDirection);
             this.bubbles.push(bubble);
-            console.log(this.bubbles);
             this.character.useItem('poisonBubblesLevel');
             this.statusBarPB.setPercentage(this.character.poisonBubblesLevel);
-            console.log(this.character.poisonBubblesLevel);
         }
         this.isPoisonBubbleUsed = false;
     }
@@ -92,7 +90,7 @@ class World {
             this.enemies.forEach((enemy, index) => {
                 if (enemy.isColliding(bubble)) {
                     this.enemies.splice(index, 1);
-                }
+                } 
             })
         });
         this.bubbles.forEach(bubble => {
@@ -100,6 +98,8 @@ class World {
                 this.bubbles.splice(bubble, 1);
                 this.endBoss.hit(20);
                 this.statusBarEndboss.setPercentage(this.endBoss.energy);
+                console.log("endboss hurt");
+                console.log(this.endBoss.isHurt());
             }
         })
         if (this.endBoss.isColliding(this.character)) {

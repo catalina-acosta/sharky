@@ -54,3 +54,14 @@ function landingPageTemplate() {
             <button id="img-button" onclick="startGame()"><img src="img/6.Botones/Start/1.png" width="300px" alt=""></button>
         </div>`
 }
+
+function musicOnTemplate() {
+    return `
+            <i class="fa-solid fa-volume-high" id="musicOn" onclick="stopSound()"></i>`
+}
+
+function musicOffTemplate() {
+    return `
+    <i class="fa-solid fa-volume-off" id="musicOff" onclick="playSound()"></i>
+    `
+}

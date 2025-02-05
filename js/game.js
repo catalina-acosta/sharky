@@ -1,14 +1,18 @@
 let canvas;
 let world;
 let keyboard = new Keyboard();
+let musicIconRef = document.getElementById("musicIncons");
+AudioLibrary.SOUNDTRACK.volume = 0.1;
 
 function startGame() {
-    dialogBox = document.getElementById("dialog-container");
+    let dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = "";
     initLevel();
     canvas = document.getElementById("canvas");
     canvas.classList.remove("d-none");
     world = new World(canvas, keyboard);
+    AudioLibrary.SOUNDTRACK.play();
+    
 }
 
 function init() {
@@ -17,9 +21,22 @@ function init() {
     }
     canvas = document.getElementById("canvas");
     canvas.classList.add("d-none");
-    dialogBox = document.getElementById("dialog-container");
+    let dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = landingPageTemplate();
-    
+    let musicIconRef = document.getElementById("musicIncons");
+    musicIconRef.innerHTML = musicOnTemplate();
+}
+
+function stopSound() {
+    AudioLibrary.stopAll();
+    let musicIconRef = document.getElementById("musicIncons");
+    musicIconRef.innerHTML = musicOffTemplate();
+}
+
+function playSound() {
+    AudioLibrary.SOUNDTRACK.play();
+    let musicIconRef = document.getElementById("musicIncons");
+    musicIconRef.innerHTML = musicOnTemplate();
 }
 
 function renderInstructions() {
