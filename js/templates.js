@@ -23,9 +23,11 @@ function instructionsTemplate() {
 
 function gameLostTemplate() {
     return `
-    <div id="dialog-box">
-            <img src="img/6.Botones/Tittles/Game Over/Recurso 9.png" alt="game over">   
-            <button id="img-button" onclick="init()"><img src="img/6.Botones/Try again/Recurso 16.png" alt="game over"></button>
+        <div class="game-over-box">
+            <div class="game-over-content">
+                <img id="gameOverImg" src="img/6.Botones/Tittles/Game Over/Recurso 9.png" alt="game over">   
+                <button id="tryAgainButton" onclick="init()"><img src="img/6.Botones/Try again/Recurso 16.png" alt="game over"><button>
+            <div>
         </div>`
     
 }

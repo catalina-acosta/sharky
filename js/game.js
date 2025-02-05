@@ -5,7 +5,7 @@ let musicIconRef = document.getElementById("musicIncons");
 AudioLibrary.SOUNDTRACK.volume = 0.1;
 
 function startGame() {
-    let dialogBox = document.getElementById("dialog-container");
+    dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = "";
     initLevel();
     canvas = document.getElementById("canvas");
@@ -21,7 +21,7 @@ function init() {
     }
     canvas = document.getElementById("canvas");
     canvas.classList.add("d-none");
-    let dialogBox = document.getElementById("dialog-container");
+    dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = landingPageTemplate();
     let musicIconRef = document.getElementById("musicIncons");
     musicIconRef.innerHTML = musicOnTemplate();

@@ -163,6 +163,46 @@ button:hover {
     z-index: 10;
 }
 
+.game-over-box {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #2e277196;
+}
+
+.game-over-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100%;
+    gap: 32px;
+    box-sizing: border-box;
+}
+
+#gameOverImg {
+    width: 80%;
+}
+
+#tryAgainButton{
+    width: 40%;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+}
+
+#tryAgainButton img {
+    width: 100%;
+}
+
+#tryAgainButton:hover{
+    cursor: pointer;
+    scale: 1.1;
+}
+
 .buttons-container {
     display: flex;
     justify-content: space-around;
