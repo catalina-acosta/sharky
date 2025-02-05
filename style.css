@@ -250,10 +250,11 @@ button:hover {
 
 /* Smartphones ------------*/
 @media only screen and (max-width: 760px) {
-    canvas {
+    canvas, #dialog-container {
         width: 100%;
         border: none;
     }
+    
 }
 
 @media (hover: none) and (orientation: portrait) {
@@ -277,6 +278,10 @@ button:hover {
     }
     #gameTitle {
         display: none;
+    }
+
+    #dialog-container {
+        height: 100vh;
     }
 }
 

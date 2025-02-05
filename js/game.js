@@ -5,6 +5,7 @@ let musicIconRef = document.getElementById("musicIncons");
 AudioLibrary.SOUNDTRACK.volume = 0.1;
 
 function startGame() {
+    clearAllIntervals()
     dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = "";
     initLevel();
@@ -16,9 +17,6 @@ function startGame() {
 }
 
 function init() {
-    if (world) {
-        world.stopGame(); // Stop the game and set this.gameOver to true
-    }
     canvas = document.getElementById("canvas");
     canvas.classList.add("d-none");
     dialogBox = document.getElementById("dialog-container");
@@ -43,6 +41,10 @@ function renderInstructions() {
     dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = instructionsTemplate();
 
+}
+
+function clearAllIntervals() {
+    for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
 
 window.addEventListener('keydown', (event) => {

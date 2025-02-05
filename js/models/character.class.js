@@ -61,16 +61,19 @@ class Character extends MovableObject {
         setInterval(() => {
             if (this.isLongIdle) {
                 this.playAnimation(ImageArray.CHARACTER_LONG_IDLE);
+                AudioLibrary.SNOARING_SOUND.play();
                 return; // if longIdle is true, break and do go to other animations
             }
 
             if (this.isDead()) {
                 this.playAnimation(ImageArray.CHARACTER_DEAD);
+                AudioLibrary.GAMEOVER_SOUND.play();
             } else if (this.isHurt()) {
                 this.playAnimation(ImageArray.CHARACTER_HURT); 
-                AudioLibrary.DAMAGE.play();
+                AudioLibrary.HURT_SOUND.play();
             } 
             else if (this.world.keyboard.SPACE && this.attackAnimationDone == false) {
+                AudioLibrary.FINSLAP_SOUND.play();
                 this.playAnimation(ImageArray.CHARACTER_ATTACK_FINSLAP, true);
                 this.isAttacking = true;
                 if(this.attackAnimationDone) {
@@ -83,6 +86,7 @@ class Character extends MovableObject {
             } 
             else if (this.world.keyboard.D && this.attackAnimationDone == false) {
                 this.playAnimation(ImageArray.CHARACTER_ATTACK_BUBBLETRAP, true);
+                AudioLibrary.BUBBLE_SOUND.play();
                 if(this.attackAnimationDone) {
                     this.attackAnimationDone = false;
                     this.world.keyboard.D = false;

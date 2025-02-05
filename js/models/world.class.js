@@ -98,8 +98,6 @@ class World {
                 this.bubbles.splice(bubble, 1);
                 this.endBoss.hit(20);
                 this.statusBarEndboss.setPercentage(this.endBoss.energy);
-                console.log("endboss hurt");
-                console.log(this.endBoss.isHurt());
             }
         })
         if (this.endBoss.isColliding(this.character)) {
@@ -108,38 +106,37 @@ class World {
         }
     }
 
-    stopGame() {
-        this.gameOver = true;
-    }
-
     checkGameOver() {
+        console.log("checking game status");
         if (this.character.isDead()) {
             let winner = "Endboss";
             setTimeout(() => {
                 this.renderGameOver(winner);
-                this.gameOver = true; 
             }, 1000);
             
         } else if(this.endBoss.isDead()) {
             let winner ="Character";
             setTimeout(() => {
                 this.renderGameOver(winner);
-                this.gameOver = true; 
             }, 1000);
         }
     }
-
+    
     renderGameOver(winner) {
+        AudioLibrary.SOUNDTRACK.pause();
         canvas = document.getElementById("canvas");
         canvas.classList.add("d-none");
         let titleRef = document.getElementById("gameTitle");
         titleRef.classList.add("d-none");
         dialogBox = document.getElementById("dialog-container");
         if (winner == "Endboss") {
+            AudioLibrary.GAMEOVER_SOUND.play();
             dialogBox.innerHTML = gameLostTemplate();
         } else {
+            AudioLibrary.VICTORY.play();
             dialogBox.innerHTML = gameWonTemplate();
         }
+        AudioLibrary.stopAll();
     }
 
     addCollectableItems(amountOfItems) {
@@ -151,6 +148,8 @@ class World {
 
     draw() {
         if(this.gameOver) {
+            console.log("game over");
+            
             return;
         }
 

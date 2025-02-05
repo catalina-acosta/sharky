@@ -35,12 +35,11 @@ class EndBoss extends MovableObject {
                 this.i ++;
             } 
             else if (this.isHurt()) {
+                AudioLibrary.DAMAGE.play();
                     this.playAnimation(ImageArray.ENDBOSS_IMAGES_HURT); 
                 } 
             
             else if (this.isDead()) {
-                console.log("endboss is dead");
-                
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_DEAD);
             } 
             else if ( this.i == 8 && distanceToCharacter < 500 && distanceToCharacter > 350 ){
