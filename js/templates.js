@@ -35,9 +35,9 @@ function gameLostTemplate() {
 function gameWonTemplate() {
     return `
         <div class="game-over-box">
-            <div class="game-over-content">
-                <button id="img-button-winner" onclick="init()"><img src="img/6.Botones/Start/1.png" alt="game over"></button>
-                <img src="img/6.Botones/Try again/Mesa de trabajo 1.png" alt="game over">   
+            <div class="game-won-content">
+                <img id="winningImg"src="img/6.Botones/Try again/Mesa de trabajo 1.png" alt="game over">   
+                <button id="imgButtonWinner" onclick="init()"><img src="img/6.Botones/Start/1.png" alt="game over"></button>
             <div>
         </div>`
 }

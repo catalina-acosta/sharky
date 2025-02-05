@@ -138,41 +138,16 @@ button:hover {
     padding-left: 24px;
 }
 
-#dialog-box-winner {
-    position: fixed;
-    z-index: 9;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    width: 100%;
-    height: 100vh;
-}
-
-#dialog-box-winner img {
-    width: 100%;    
-    height: 100%;
-}
-
-#img-button-winner{
-    border: none;
-    background-color: transparent;
-    position: fixed;
-    bottom: 40px;
-    right: 280px;
-    z-index: 10;
-}
-
 .game-over-box {
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: #2e277196;
+    background-color: #323077;
 }
 
-.game-over-content {
+.game-over-content, .game-won-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -183,18 +158,27 @@ button:hover {
     box-sizing: border-box;
 }
 
+.game-won-content {
+    gap: 0;
+}
+
+#winningImg {
+    width: 100%;
+}
+
+
 #gameOverImg {
     width: 80%;
 }
 
-#tryAgainButton{
+#tryAgainButton, #imgButtonWinner{
     width: 40%;
     border: none;
     padding: 0;
     background-color: transparent;
 }
 
-#tryAgainButton img {
+#tryAgainButton img, #imgButtonWinner img {
     width: 100%;
 }
 
