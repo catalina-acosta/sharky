@@ -111,15 +111,13 @@ class World {
         if (this.character.isDead()) {
             let winner = "Endboss";
             AudioLibrary.GAMEOVER_SOUND.play();
-            // this.gameOver = true;
             setTimeout(() => {
                 this.renderGameOver(winner);
-            }, 2000);
+            }, 1000);
             
         } else if(this.endBoss.isDead()) {
             let winner ="Character";
             AudioLibrary.VICTORY.play();
-            // this.gameOver = true;
             setTimeout(() => {
                 this.renderGameOver(winner);
             }, 2000);

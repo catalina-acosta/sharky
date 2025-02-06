@@ -53,6 +53,7 @@ function startGame() {
 
 
 function init() {
+    stopSound();
     canvas = document.getElementById("canvas");
     canvas.classList.add("d-none");
     dialogBox = document.getElementById("dialog-container");
@@ -210,9 +211,7 @@ function addTouchEventListeners() {
 
 function handleOrientationChange() {
     if (window.matchMedia("(orientation: portrait)").matches) {
-        console.log("Portrait mode");
     } else if (window.matchMedia("(orientation: landscape)").matches) {
-        console.log("Landscape mode");
     }
     addTouchEventListeners();
 }

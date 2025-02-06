@@ -8,13 +8,16 @@ class AudioLibrary {
     static HURT_SOUND = new Audio('audio/hurt.mp3');
     static SNOARING_SOUND = new Audio('audio/snoaring.mp3');
     static GAMEOVER_SOUND = new Audio('audio/gameOver.mp3');
+    static ENDBOSS_ATTACK = new Audio('audio/endbossAttack.mp3');
 
     static isSoundOn = false;
 
     static allSounds = [AudioLibrary.DAMAGE, AudioLibrary.SOUNDTRACK, 
                         AudioLibrary.SWIMMING, AudioLibrary.VICTORY, 
                         AudioLibrary.BUBBLE_SOUND, AudioLibrary.FINSLAP_SOUND, 
-                        AudioLibrary.HURT_SOUND, AudioLibrary.SNOARING_SOUND];
+                        AudioLibrary.HURT_SOUND, AudioLibrary.SNOARING_SOUND, 
+                        AudioLibrary.ENDBOSS_ATTACK
+                    ];
 
     static stopAll() {
         AudioLibrary.allSounds.forEach(sound => {

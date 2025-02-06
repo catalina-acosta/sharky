@@ -2,6 +2,7 @@ class Enemy extends MovableObject {
     height = 100;
     width = 100;
     IMAGES = [];
+    IMAGES_DEAD = []
     currentImage = 0;
     constructor(name, images){
         super();

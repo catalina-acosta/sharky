@@ -251,8 +251,13 @@ button:hover {
 
 .impressum-template {
     display: flex;
-    justify-content: flex-start;
-    margin: 24px;
+    justify-content: center;
+}
+
+.impressum-content {
+    width: 48%;
+    max-height: 80%;
+    overflow-y: auto;
 }
 
 #closeButton {
@@ -264,6 +269,20 @@ button:hover {
     display: flex;
     gap: 8px;
 }
+
+.button-wrapper {
+    display: flex;
+    justify-content: right;
+    width: 100%;
+    margin: 0 8px;
+}
+
+.button-wrapper-impressum {
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 48px;
+}
+
 /* Smartphones ------------*/
 @media only screen and (max-width: 760px) {
     canvas, #dialog-box{
@@ -291,7 +310,48 @@ button:hover {
     .title-box img {
         width: 140px;
     }
+
+    .impressum-content {
+        width: 90%;
+        height: 70%;
+    }
+
+    .key-container {
+        flex-direction: column;
+        min-width: 320px;
+        justify-content: center;
+        align-items: center;
+        gap: 8px;
+    }
     
+}
+
+@media only screen and (max-widt: 480px) {
+    .impressum-template {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 1000;
+        overflow: hidden;
+        }
+    
+        .impressum-content {
+            width: 78%;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+    
+        .button-wrapper-impressum {
+            position: fixed;
+            top: 28px;
+            right: 108px;
+        }
 }
 
 @media only screen and (max-height: 480px) {
@@ -384,6 +444,35 @@ button:hover {
         padding: 0 14px;
     }
 
+    .key-container {
+        flex-direction: row;
+    }
+
+    .impressum-template {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    overflow: hidden;
+    }
+
+    .impressum-content {
+        width: 78%;
+        max-height: 80%;
+        overflow-y: auto;
+    }
+
+    .button-wrapper-impressum {
+        position: fixed;
+        top: 28px;
+        right: 108px;
+    }
 }
 
 

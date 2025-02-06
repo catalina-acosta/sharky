@@ -1,23 +1,25 @@
 function instructionsTemplate() {
     return `<div id="dialog-box">
-            <div><button onclick="init()">X</button></div>
-            <h2>HOW TO PLAY</h2>
-            <div class="key-container">
-                <div class="single-key-container">
-                    <h3>move around</h3>
-                    <img width="200px" src="img/6.Botones/Key/arrow keys.png" alt="">
+                <div class="button-wrapper">
+                    <button id="closeButton" onclick="restartGame()">X</button>
                 </div>
-                <div class="single-key-container">
-                    <h3>attack poison bubble</h3>
-                    <img width="80px" src="img/6.Botones/Key/D key.png" alt="">
+                <h2>HOW TO PLAY</h2>
+                <div class="key-container">
+                    <div class="single-key-container">
+                        <h3>move around</h3>
+                        <img width="150px" src="img/6.Botones/Key/arrow keys.png" alt="">
+                    </div>
+                    <div class="single-key-container">
+                        <h3>attack poison bubble</h3>
+                        <img width="60px" src="img/6.Botones/Key/D key.png" alt="">
+                    </div>
+                    <div class="single-key-container">
+                        <h3>attack - finslap</h3>
+                        <img class="instruction-key" src="img/6.Botones/Key/Space Bar key.png" alt="">
+                    </div>
                 </div>
-                <div class="single-key-container">
-                    <h3>attack - finslap</h3>
-                    <img class="instruction-key" src="img/6.Botones/Key/Space Bar key.png" alt="">
-                </div>
-            </div>
-            <button id="img-button" onclick="startGame(), initLevel()"><img src="img/6.Botones/Start/1.png" width="300px" alt=""></button>
-        </div>`
+                <button id="startGameButton" onclick="startGame()">Start</button>
+            </div>`
 }
 
 
@@ -83,16 +85,42 @@ function errorTemplate(){
 
 function impressumTemplate() {
     return `
-    <div id="impressum" class="impressum-template">
-        <div class="impressum-content">
-            <h2>Impressum</h2>
-            <p><strong>Game Developer:</strong> Catalina Acosta Rivera</p>
-            <p><strong>Address:</strong> FichtelgebirgStr. 29, 93057 Regensburg</p>
-            <p><strong>Email:</strong> catalina.acosta.rivera@gmail.com</p>
-        </div>
-        <div class="button-wrapper">
+        <div class="button-wrapper-impressum">
             <button id="closeButton" onclick="restartGame()">X</button>
         </div>
-    </div>
-    `
+        <div id="impressum" class="impressum-template">
+            <div class="impressum-content">
+                <h1 class="adsimple-322944536">Impressum</h1>
+                <p class="adsimple-322944536">Informationen über den Diensteanbieter.</p>
+                <p class="adsimple-322944536">Catalina Acosta Rivera</p>
+                <p class="adsimple-322944536">Fichtelgebirgstr. 29, <br />93057 Regensburg, <br />Deutschland</p>
+                <p>
+                <strong>Tel.:</strong> 015165685658<br />
+                <strong>E-Mail:</strong> <a href="mailto:catalina.acosta.rivera@gmail.com">catalina.acosta.rivera@gmail.com</a>
+                </p>
+                <div style="display:none">
+                </div>
+                <div style="display:none">
+                </div>
+                <div style="display:none">
+                </div>
+                <h2 id="eu-streitschlichtung" class="adsimple-322944536 fusion-responsive-typography-calculated" data-fontsize="24" style="--fontSize: 24;line-height: 1.5;--minFontSize: 24" data-lineheight="36px">EU-Streitschlichtung</h2>
+                <p class="adsimple-322944536">Gemäß Verordnung über Online-Streitbeilegung in Verbraucherangelegenheiten (ODR-Verordnung) möchten wir Sie über die Online-Streitbeilegungsplattform (OS-Plattform) informieren.<br />
+                Verbraucher haben die Möglichkeit, Beschwerden an die Online Streitbeilegungsplattform der Europäischen Kommission unter <a class="adsimple-322944536" href="https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&amp;lng=DE" target="_blank" rel="follow noopener">https://ec.europa.eu/consumers/odr/main/index.cfm?event=main.home2.show&amp;lng=DE</a> zu richten. Die dafür notwendigen Kontaktdaten finden Sie oberhalb in unserem Impressum.</p>
+                <p class="adsimple-322944536">Wir möchten Sie jedoch darauf hinweisen, dass wir nicht bereit oder verpflichtet sind, an Streitbeilegungsverfahren vor einer Verbraucherschlichtungsstelle teilzunehmen.</p>
+                <h2 id="bildernachweis" class="adsimple-322944536 fusion-responsive-typography-calculated" data-fontsize="24" style="--fontSize: 24;line-height: 1.5;--minFontSize: 24" data-lineheight="36px">Bildernachweis</h2>
+                <p class="adsimple-322944536">Die Bilder, Fotos und Grafiken auf dieser Webseite sind urheberrechtlich geschützt.</p>
+                <p>
+                <strong>Die Bilderrechte liegen bei:</strong>
+                <br />Developer Akademie</p>
+                <div style="display:none">
+                </div>
+                <div style="display:none">
+                </div>
+                <p>Alle Texte sind urheberrechtlich geschützt.</p>
+                <p style="margin-top:15px">Quelle: Erstellt mit dem <a href="https://www.adsimple.de/impressum-generator/" title="Impressum Generator Deutschland von AdSimple">Impressum Generator</a> von AdSimple</p>
+
+            </div>
+        </div>
+        `
 }

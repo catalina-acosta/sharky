@@ -1,14 +1,13 @@
 let level1;
 function initLevel() {
-
-
     level1 = new Level(
         [
             new Enemy("pufferfish", ImageArray.PUFFERFISH_IMAGES_TRANSITION),
             new Enemy("jellyfish", ImageArray.JELLYFISH_IMAGES_REGULAR),
             new Enemy("pufferfish", ImageArray.PUFFERFISH_IMAGES_TRANSITION),
             new Enemy("jellyfish", ImageArray.JELLYFISH_IMAGES_REGULAR),
-            new Enemy("jellyfish",ImageArray.JELLYFISH_IMAGES_REGULAR),
+            new Enemy("pufferfish", ImageArray.PUFFERFISH_IMAGES_TRANSITION),
+            new Enemy("jellyfish", ImageArray.JELLYFISH_IMAGES_REGULAR),
         ],
     
         [
