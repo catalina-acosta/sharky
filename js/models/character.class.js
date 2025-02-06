@@ -33,8 +33,6 @@ class Character extends MovableObject {
         setInterval(()=>{
             AudioLibrary.SWIMMING.pause();
             AudioLibrary.DAMAGE.playbackRate = 0.5;
-
-
             if(this.world.keyboard.RIGHT && this.x <= this.world.level.levelEndX){
                 this.moveRight();
                 AudioLibrary.playSound(AudioLibrary.SWIMMING);
@@ -60,7 +58,7 @@ class Character extends MovableObject {
             if (this.isLongIdle) {
                 this.playAnimation(ImageArray.CHARACTER_LONG_IDLE);
                 AudioLibrary.playSound(AudioLibrary.SNOARING_SOUND);
-                return; // if longIdle is true, break and do go to other animations
+                return; 
             }
 
             if (this.isDead()) {
@@ -92,7 +90,6 @@ class Character extends MovableObject {
             } else {
                 this.playAnimation(ImageArray.CHARACTER_IDLE);
             }
-            
         }, 100);
     }
 
@@ -100,7 +97,9 @@ class Character extends MovableObject {
         window.addEventListener('keydown', () => { // listens when there is a keydown
             this.resetInactivityTimer(); // resets the timer when a key is pressed 
         });
-
+        window.addEventListener('touchstart', () => {
+            this.resetInactivityTimer();
+        });
         this.resetInactivityTimer(); // initial reset of the timer
     }
 

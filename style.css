@@ -42,7 +42,7 @@ canvas {
     background-color: black;
     border: 12px solid #2f2771;
     border-radius: 8px;
-    /* display: block; */
+    box-sizing: border-box;
 }
 
 #dialog-container {
@@ -59,6 +59,7 @@ canvas {
     align-items: center;
     width: 720px;
     height: 480px;
+    box-sizing: border-box;
 }
 
 
@@ -161,13 +162,6 @@ button:hover {
     width: 80%;
 }
 
-#startGameButton {
-    width: 36%;
-    border: none;
-    padding: 0;
-    background-color: transparent;
-}
-
 #tryAgainButton, #imgButtonWinner, #img-button{
     width: 40%;
     border: none;
@@ -175,7 +169,7 @@ button:hover {
     background-color: transparent;
 }
 
-#tryAgainButton img, #imgButtonWinner img, #startGameButton {
+#tryAgainButton img, #imgButtonWinner img {
     width: 100%;
 }
 
@@ -244,7 +238,32 @@ button:hover {
     scale: 1.1;
 }
 
+.error-template {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
+.error-template h2 {
+    text-align: center;
+    padding: 24px 8px;
+}
+
+.impressum-template {
+    display: flex;
+    justify-content: flex-start;
+    margin: 24px;
+}
+
+#closeButton {
+    padding: 8px 12px;
+    font-size: 18px;
+}
+
+.main-buttons {
+    display: flex;
+    gap: 8px;
+}
 /* Smartphones ------------*/
 @media only screen and (max-width: 760px) {
     canvas, #dialog-box{
@@ -259,6 +278,19 @@ button:hover {
     .title-container h1{
         font-size: 40px;
     }
+    .main-buttons {
+        gap: 8px;
+        flex-direction: column;
+    }
+
+    .main-buttons button {
+        font-size: 18px;
+        padding: 14px 12px;
+    }
+
+    .title-box img {
+        width: 140px;
+    }
     
 }
 
@@ -268,7 +300,6 @@ button:hover {
         box-sizing: border-box;
     }
 }
-
 
 @media (hover: none) and (orientation: portrait) and (max-width: 1024px) {
     #buttonsMobile.visible {
@@ -339,7 +370,7 @@ button:hover {
     }
 
     #startGameButton img{
-        width: 220px;
+        width: 100%;
     }
     .attack-btns #img-button {
         width: 100%;

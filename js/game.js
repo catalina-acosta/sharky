@@ -15,19 +15,40 @@ function clearAllIntervals() {
 }
 
 function startGame() {
-    dialogBox = document.getElementById("dialog-container");
-    dialogBox.innerHTML = "";
-    initLevel();
-    canvas = document.getElementById("canvas");
-    canvas.classList.remove("d-none");
-    world = new World(canvas, keyboard);
-    AudioLibrary.SOUNDTRACK.play();
-    AudioLibrary.isSoundOn = true;
-    isGameStarted = true;
-    console.log(isGameStarted);
-    let buttonsMobile = document.getElementById("buttonsMobile");
-    buttonsMobile.classList.add("visible");
-    addTouchEventListeners();
+        if (window.matchMedia("(pointer: coarse)").matches) {
+            if (window.matchMedia("(orientation: landscape)").matches || window.innerWidth > 768) {
+                dialogBox = document.getElementById("dialog-container");
+                dialogBox.innerHTML = "";
+                initLevel();
+                canvas = document.getElementById("canvas");
+                canvas.classList.remove("d-none");
+                world = new World(canvas, keyboard);
+                AudioLibrary.SOUNDTRACK.play();
+                AudioLibrary.isSoundOn = true;
+                isGameStarted = true;
+
+                let buttonsMobile = document.getElementById("buttonsMobile");
+                buttonsMobile.classList.add("visible");
+                addTouchEventListeners();
+            } else {
+                dialogBox = document.getElementById("dialog-container");
+                dialogBox.innerHTML = errorTemplate();
+            }
+        } else {
+            dialogBox = document.getElementById("dialog-container");
+            dialogBox.innerHTML = "";
+            initLevel();
+            canvas = document.getElementById("canvas");
+            canvas.classList.remove("d-none");
+            world = new World(canvas, keyboard);
+            AudioLibrary.SOUNDTRACK.play();
+            AudioLibrary.isSoundOn = true;
+            isGameStarted = true;
+
+            let buttonsMobile = document.getElementById("buttonsMobile");
+            buttonsMobile.classList.add("visible");
+            addTouchEventListeners();
+        }
 }
 
 
@@ -187,16 +208,25 @@ function addTouchEventListeners() {
     }
 }
 
-    function handleOrientationChange() {
-        if (window.matchMedia("(orientation: portrait)").matches) {
-            console.log("Portrait mode");
-        } else if (window.matchMedia("(orientation: landscape)").matches) {
-            console.log("Landscape mode");
-        }
-        addTouchEventListeners();
+function handleOrientationChange() {
+    if (window.matchMedia("(orientation: portrait)").matches) {
+        console.log("Portrait mode");
+    } else if (window.matchMedia("(orientation: landscape)").matches) {
+        console.log("Landscape mode");
     }
+    addTouchEventListeners();
+}
 
-    window.addEventListener('orientationchange', handleOrientationChange);
-    window.addEventListener('resize', handleOrientationChange);
+window.addEventListener('orientationchange', handleOrientationChange);
+window.addEventListener('resize', handleOrientationChange);
 
-    handleOrientationChange();
+handleOrientationChange();
+
+function showImpressum() {
+    let dialogRef = document.getElementById('dialog-container');
+    dialogRef.innerHTML = impressumTemplate(); 
+}
+
+function hideImpressum() {
+    document.getElementById('impressum').classList.add('d-none');
+}

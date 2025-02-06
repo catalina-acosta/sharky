@@ -52,11 +52,13 @@ function landingPageTemplate() {
                 </div>
                 <img src="img/sharkie-homepage.png" alt="sharky">
             </div>
-            <div>
+            <div class="main-buttons">
                 <button onclick="renderInstructions()">how to play</button>
+                <button id="startGameButton" onclick="startGame()">Start</button>
+                <button id="impressumButton"onclick="showImpressum()">Impressum</button>
             </div>
-            <button id="startGameButton" onclick="startGame()"><img src="img/6.Botones/Start/1.png" width="300px" alt=""></button>
-        </div>`
+        </div>
+        `
 }
 
 function musicOnTemplate() {
@@ -67,5 +69,30 @@ function musicOnTemplate() {
 function musicOffTemplate() {
     return `
     <i class="fa-solid fa-volume-off" id="musicOff" onclick="playSound()"></i>
+    `
+}
+
+function errorTemplate(){
+    return `
+    <div class="error-template">
+        <h2>Please turn your phone for landscape mode</h2>
+        <button id="startGameButton" onclick="startGame()">Start</button>
+    </div>
+    `
+}
+
+function impressumTemplate() {
+    return `
+    <div id="impressum" class="impressum-template">
+        <div class="impressum-content">
+            <h2>Impressum</h2>
+            <p><strong>Game Developer:</strong> Catalina Acosta Rivera</p>
+            <p><strong>Address:</strong> FichtelgebirgStr. 29, 93057 Regensburg</p>
+            <p><strong>Email:</strong> catalina.acosta.rivera@gmail.com</p>
+        </div>
+        <div class="button-wrapper">
+            <button id="closeButton" onclick="restartGame()">X</button>
+        </div>
+    </div>
     `
 }
