@@ -134,7 +134,7 @@ class World {
         if (winner == "Endboss") {
             AudioLibrary.GAMEOVER_SOUND.play();
             dialogBox.innerHTML = gameLostTemplate()
-        } else {
+        } else if (winner == "Character"){
             AudioLibrary.VICTORY.play();
             dialogBox.innerHTML = gameWonTemplate();
         }
@@ -153,33 +153,49 @@ class World {
             return;
         }
 
-        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
-        this.ctx.translate(this.cameraX, 0);
-        this.addObjectToMap(this.level.backgroundObjects);
-        
-        this.ctx.translate(-this.cameraX, 0); // back
-        this.addToMap(this.statusBarPB);
-        this.addToMap(this.statusBarEnergy);
-        this.addToMap(this.statusBarCoins);
-        this.addToMap(this.statusBarEndboss);
-        this.ctx.translate(this.cameraX, 0); // forwards
-        
-        this.addObjectToMap(this.coins);
-        this.addObjectToMap(this.poisonBubbles);
-        this.addObjectToMap(this.level.enemies);
-        this.addObjectToMap(this.bubbles);
-        this.addToMap(this.character);
-
-        this.addToMap(this.endBoss);
-
-        this.ctx.translate(-this.cameraX, 0); // back
-        
+        this.clearCanvas();
+        this.moveCamera();
+        this.drawBackgroundObjects();
+        this.drawGameObjects();
+        this.resetCamera();
+        this.drawStatusBars();
         this.checkGameOver();
         let self = this;
         requestAnimationFrame(function() {
             self.draw();
         });
+    }
+
+    clearCanvas() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+    }
+    
+    moveCamera() {
+        this.ctx.translate(this.cameraX, 0);
+    }
+    
+    resetCamera() {
+        this.ctx.translate(-this.cameraX, 0);
+    }
+    
+    drawBackgroundObjects() {
+        this.addObjectToMap(this.level.backgroundObjects);
+    }
+    
+    drawGameObjects() {
+        this.addObjectToMap(this.coins);
+        this.addObjectToMap(this.poisonBubbles);
+        this.addObjectToMap(this.level.enemies);
+        this.addObjectToMap(this.bubbles);
+        this.addToMap(this.character);
+        this.addToMap(this.endBoss);
+    }
+    
+    drawStatusBars() {
+        this.addToMap(this.statusBarPB);
+        this.addToMap(this.statusBarEnergy);
+        this.addToMap(this.statusBarCoins);
+        this.addToMap(this.statusBarEndboss);
     }
 
     addObjectToMap(objects) {
@@ -196,7 +212,6 @@ class World {
         if (mo.otherDirection) {
             this.flipImageBack(mo)
         }
-        mo.drawFrameOffset(this.ctx);
     }
 
     flipImage(mo) {
