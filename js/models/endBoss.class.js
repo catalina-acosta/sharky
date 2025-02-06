@@ -34,14 +34,16 @@ class EndBoss extends MovableObject {
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_INTRODUCE);
                 this.i ++;
             } 
+            else if (this.isDead()) {
+                console.log(this.isDead());
+                
+                this.playAnimation(ImageArray.ENDBOSS_IMAGES_DEAD);
+            } 
             else if (this.isHurt()) {
-                AudioLibrary.DAMAGE.play();
+                AudioLibrary.playSound(AudioLibrary.DAMAGE);
                     this.playAnimation(ImageArray.ENDBOSS_IMAGES_HURT); 
                 } 
             
-            else if (this.isDead()) {
-                this.playAnimation(ImageArray.ENDBOSS_IMAGES_DEAD);
-            } 
             else if ( this.i == 8 && distanceToCharacter < 500 && distanceToCharacter > 350 ){
                 this.hadFirstContact = true;
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_FLOATING);

@@ -5,7 +5,7 @@ let musicIconRef = document.getElementById("musicIncons");
 AudioLibrary.SOUNDTRACK.volume = 0.1;
 
 function restartGame() {
-    console.log("staring game again");
+    console.log("game again");
     
     clearAllIntervals();
     init();
@@ -23,6 +23,7 @@ function startGame() {
     canvas.classList.remove("d-none");
     world = new World(canvas, keyboard);
     AudioLibrary.SOUNDTRACK.play();
+    AudioLibrary.isSoundOn = true;
 }
 
 
@@ -38,6 +39,7 @@ function init() {
 function stopSound() {
     AudioLibrary.stopAll();
     console.log("all sounds stopped");
+    AudioLibrary.isSoundOn = false;
     
     let musicIconRef = document.getElementById("musicIncons");
     musicIconRef.innerHTML = musicOffTemplate();
@@ -47,6 +49,7 @@ function playSound() {
     AudioLibrary.SOUNDTRACK.play();
     let musicIconRef = document.getElementById("musicIncons");
     musicIconRef.innerHTML = musicOnTemplate();
+    AudioLibrary.isSoundOn = true;
 }
 
 function renderInstructions() {

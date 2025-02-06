@@ -110,12 +110,14 @@ class World {
     checkGameOver() {
         if (this.character.isDead()) {
             let winner = "Endboss";
+            this.gameOver = true;
             setTimeout(() => {
                 this.renderGameOver(winner);
             }, 1000);
             
         } else if(this.endBoss.isDead()) {
             let winner ="Character";
+            this.gameOver = true;
             setTimeout(() => {
                 this.renderGameOver(winner);
             }, 1000);
@@ -131,7 +133,7 @@ class World {
         dialogBox = document.getElementById("dialog-container");
         if (winner == "Endboss") {
             AudioLibrary.GAMEOVER_SOUND.play();
-            dialogBox.innerHTML = gameLostTemplate();
+            dialogBox.innerHTML = gameLostTemplate()
         } else {
             AudioLibrary.VICTORY.play();
             dialogBox.innerHTML = gameWonTemplate();
@@ -148,8 +150,6 @@ class World {
 
     draw() {
         if(this.gameOver) {
-            console.log("game over");
-            
             return;
         }
 

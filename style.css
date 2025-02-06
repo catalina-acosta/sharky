@@ -53,12 +53,12 @@ canvas {
     border: 12px solid #2f2771;
     border-radius: 8px;
     background-color: #64c9e0;
-    width: 720px;
-    height: 480px;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
+    width: 720px;
+    height: 480px;
 }
 
 
@@ -74,12 +74,6 @@ p {
 
 .d-none {
     display: none;
-}
-
-#img-button {
-    border: none;
-    background-color: transparent;
-    padding: 0;
 }
 
 button {
@@ -120,22 +114,13 @@ button:hover {
     align-items: center;
 }
 
-.img-container {
-    width: 200px;
-    height: 200px;
-    object-fit: cover;
-    object-position: top;
-    overflow: hidden;
-}
-
 .title-box {
     display: flex;
-    align-items: flex-end;
+    align-items: center;
     justify-content: center;
-}
-
-.title-container {
-    padding-left: 24px;
+    flex-direction: column;
+    gap: 24px;
+    text-align: center;
 }
 
 .game-over-box {
@@ -167,18 +152,25 @@ button:hover {
 }
 
 
-#gameOverImg {
+#gameOverImg{
     width: 80%;
 }
 
-#tryAgainButton, #imgButtonWinner{
+#startGameButton {
+    width: 36%;
+    border: none;
+    padding: 0;
+    background-color: transparent;
+}
+
+#tryAgainButton, #imgButtonWinner, #img-button{
     width: 40%;
     border: none;
     padding: 0;
     background-color: transparent;
 }
 
-#tryAgainButton img, #imgButtonWinner img {
+#tryAgainButton img, #imgButtonWinner img, #startGameButton {
     width: 100%;
 }
 
@@ -250,9 +242,17 @@ button:hover {
 
 /* Smartphones ------------*/
 @media only screen and (max-width: 760px) {
-    canvas, #dialog-container {
+    canvas, #dialog-box{
+        box-sizing: border-box;
         width: 100%;
-        border: none;
+        /* border: none; */
+    }
+    .title-container {
+        padding: 4px
+    }
+
+    .title-container h1{
+        font-size: 40px;
     }
     
 }

@@ -9,6 +9,8 @@ class AudioLibrary {
     static SNOARING_SOUND = new Audio('audio/snoaring.mp3');
     static GAMEOVER_SOUND = new Audio('audio/gameOver.mp3');
 
+    static isSoundOn = false;
+
     static allSounds = [AudioLibrary.DAMAGE, AudioLibrary.SOUNDTRACK, 
                         AudioLibrary.SWIMMING, AudioLibrary.VICTORY, 
                         AudioLibrary.BUBBLE_SOUND, AudioLibrary.FINSLAP_SOUND, 
@@ -17,7 +19,9 @@ class AudioLibrary {
     static stopAll() {
         AudioLibrary.allSounds.forEach(sound => {
             sound.pause();  
+            sound.currentTime = 0; 
         });
+        AudioLibrary.isSoundOn = false;
     }
 
     static setVolume(volume) {
@@ -25,6 +29,12 @@ class AudioLibrary {
             sound.volume = volume;
         });
     }
+
+    static playSound(sound) {
+        if (AudioLibrary.isSoundOn) {
+            sound.play();
+        }
+    }
 }
 
-AudioLibrary.setVolume(0.1);
+AudioLibrary.setVolume(0.2);
