@@ -50,7 +50,7 @@ function landingPageTemplate() {
                     <h1>Welcome!</h1>
                     <h2>Help <span>sharky</span> defet enemies under the sea!</h2>
                 </div>
-                <img src="img/sharkie-homepage.png" alt="sharky" width="200px">
+                <img src="img/sharkie-homepage.png" alt="sharky">
             </div>
             <div>
                 <button onclick="renderInstructions()">how to play</button>

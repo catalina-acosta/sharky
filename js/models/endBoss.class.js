@@ -36,7 +36,6 @@ class EndBoss extends MovableObject {
             } 
             else if (this.isDead()) {
                 console.log(this.isDead());
-                
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_DEAD);
             } 
             else if (this.isHurt()) {

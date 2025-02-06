@@ -110,21 +110,24 @@ class World {
     checkGameOver() {
         if (this.character.isDead()) {
             let winner = "Endboss";
-            this.gameOver = true;
+            AudioLibrary.GAMEOVER_SOUND.play();
+            // this.gameOver = true;
             setTimeout(() => {
                 this.renderGameOver(winner);
-            }, 1000);
+            }, 2000);
             
         } else if(this.endBoss.isDead()) {
             let winner ="Character";
-            this.gameOver = true;
+            AudioLibrary.VICTORY.play();
+            // this.gameOver = true;
             setTimeout(() => {
                 this.renderGameOver(winner);
-            }, 1000);
+            }, 2000);
         }
     }
     
     renderGameOver(winner) {
+        this.gameOver = true;
         AudioLibrary.SOUNDTRACK.pause();
         canvas = document.getElementById("canvas");
         canvas.classList.add("d-none");
@@ -132,10 +135,9 @@ class World {
         titleRef.classList.add("d-none");
         dialogBox = document.getElementById("dialog-container");
         if (winner == "Endboss") {
-            AudioLibrary.GAMEOVER_SOUND.play();
+            // AudioLibrary.GAMEOVER_SOUND.play();
             dialogBox.innerHTML = gameLostTemplate()
         } else if (winner == "Character"){
-            AudioLibrary.VICTORY.play();
             dialogBox.innerHTML = gameWonTemplate();
         }
         AudioLibrary.stopAll();

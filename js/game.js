@@ -1,5 +1,6 @@
 let canvas;
 let world;
+let isGameStarted = false;
 let keyboard = new Keyboard();
 let musicIconRef = document.getElementById("musicIncons");
 AudioLibrary.SOUNDTRACK.volume = 0.1;
@@ -24,6 +25,11 @@ function startGame() {
     world = new World(canvas, keyboard);
     AudioLibrary.SOUNDTRACK.play();
     AudioLibrary.isSoundOn = true;
+    isGameStarted = true;
+    console.log(isGameStarted);
+    let buttonsMobile = document.getElementById("buttonsMobile");
+    buttonsMobile.classList.add("visible");
+    addTouchEventListeners();
 }
 
 
@@ -34,6 +40,10 @@ function init() {
     dialogBox.innerHTML = landingPageTemplate();
     let musicIconRef = document.getElementById("musicIncons");
     musicIconRef.innerHTML = musicOnTemplate();
+
+    let buttonsMobile = document.getElementById("buttonsMobile");
+    buttonsMobile.classList.remove("visible");
+    isGameStarted = false;
 }
 
 function stopSound() {
@@ -113,3 +123,83 @@ window.addEventListener('keyup', (event) => {
         keyboard.D_SOLVED = false;
     }
 });
+
+function addTouchEventListeners() {
+    console.log(isGameStarted);
+    
+    if (isGameStarted && window.matchMedia("(orientation: landscape)").matches) {
+        document.getElementById('up').addEventListener('touchstart', (event) => {
+            event.preventDefault();
+            console.log("key up");
+            keyboard.UP = true;
+        });
+
+        document.getElementById('up').addEventListener('touchend', (event) => {
+            event.preventDefault();
+            keyboard.UP = false;
+        });
+
+        document.getElementById('left').addEventListener('touchstart', (event) => {
+            event.preventDefault();
+            keyboard.LEFT = true;
+        });
+
+        document.getElementById('left').addEventListener('touchend', (event) => {
+            event.preventDefault();
+            keyboard.LEFT = false;
+        });
+
+        document.getElementById('right').addEventListener('touchstart', (event) => {
+            event.preventDefault();
+            keyboard.RIGHT = true;
+        });
+
+        document.getElementById('right').addEventListener('touchend', (event) => {
+            event.preventDefault();
+            keyboard.RIGHT = false;
+        });
+
+        document.getElementById('down').addEventListener('touchstart', (event) => {
+            event.preventDefault();
+            keyboard.DOWN = true;
+        });
+
+        document.getElementById('down').addEventListener('touchend', (event) => {
+            event.preventDefault();
+            keyboard.DOWN = false;
+        });
+
+        document.getElementById('dKey').addEventListener('touchstart', (event) => {
+            event.preventDefault();
+            keyboard.D = true;
+        });
+
+        document.getElementById('dKey').addEventListener('touchend', (event) => {
+            event.preventDefault();
+            keyboard.D = false;
+        });
+
+        document.getElementById('spaceKey').addEventListener('touchstart', (event) => {
+            event.preventDefault();
+            keyboard.SPACE = true;
+        });
+
+        document.getElementById('spaceKey').addEventListener('touchend', (event) => {
+            event.preventDefault();
+            keyboard.SPACE = false;
+        });
+    }
+}
+
+    function handleOrientationChange() {
+        if (window.matchMedia("(orientation: portrait)").matches) {
+            console.log("Portrait mode");
+        } else if (window.matchMedia("(orientation: landscape)").matches) {
+            console.log("Landscape mode");
+        }
+    }
+
+    window.addEventListener('orientationchange', handleOrientationChange);
+    window.addEventListener('resize', handleOrientationChange);
+
+    handleOrientationChange();
