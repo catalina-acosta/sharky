@@ -270,8 +270,24 @@ button:hover {
 }
 
 
-@media (hover: none) and (orientation: portrait) {
-    /* dialog that phone ld be turned */
+@media (hover: none) and (orientation: portrait) and (max-width: 1024px) {
+    #buttonsMobile.visible {
+        display: block;
+        position: fixed;
+        bottom: 65px;
+        left: 0;
+        width: 100%;
+    }
+
+    .buttons-mobile-container {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .attack-btns #img-button {
+        width: 100%;
+    }
 }
 
 @media (hover: none) and (orientation: landscape) {
@@ -279,7 +295,7 @@ button:hover {
         display: block;
         position: fixed;
         bottom: 18px;
-        left: 156px;
+        width: 100%;
     }
     #gameTitle {
         display: none;
@@ -331,9 +347,10 @@ button:hover {
 
     .buttons-mobile-container {
         display: flex;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
         gap: 16px;
+        padding: 0 14px;
     }
 
 }

@@ -6,8 +6,6 @@ let musicIconRef = document.getElementById("musicIncons");
 AudioLibrary.SOUNDTRACK.volume = 0.1;
 
 function restartGame() {
-    console.log("game again");
-    
     clearAllIntervals();
     init();
 }
@@ -48,9 +46,7 @@ function init() {
 
 function stopSound() {
     AudioLibrary.stopAll();
-    console.log("all sounds stopped");
     AudioLibrary.isSoundOn = false;
-    
     let musicIconRef = document.getElementById("musicIncons");
     musicIconRef.innerHTML = musicOffTemplate();
 }
@@ -127,7 +123,7 @@ window.addEventListener('keyup', (event) => {
 function addTouchEventListeners() {
     console.log(isGameStarted);
     
-    if (isGameStarted && window.matchMedia("(orientation: landscape)").matches) {
+    if (isGameStarted && window.matchMedia("(hover: none)").matches) {
         document.getElementById('up').addEventListener('touchstart', (event) => {
             event.preventDefault();
             console.log("key up");
@@ -197,6 +193,7 @@ function addTouchEventListeners() {
         } else if (window.matchMedia("(orientation: landscape)").matches) {
             console.log("Landscape mode");
         }
+        addTouchEventListeners();
     }
 
     window.addEventListener('orientationchange', handleOrientationChange);
