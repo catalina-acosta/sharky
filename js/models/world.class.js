@@ -312,6 +312,8 @@ class World {
         dialogBox = document.getElementById("dialog-container");
         canvas.classList.add("d-none");
         titleRef.classList.add("d-none");
+        let buttonsMobile = document.getElementById("buttonsMobile");
+        buttonsMobile.classList.remove("visible");
         this.renderFinalTemplate(winner, dialogBox);
         AudioLibrary.stopAll();
     }

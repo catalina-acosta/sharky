@@ -154,7 +154,7 @@ button:hover {
 }
 
 #winningImg {
-    width: 100%;
+    width: 60%;
 }
 
 
@@ -406,7 +406,11 @@ button:hover {
     }
 
     .title-box img {
-        width: 140px;
+        width: 88px;
+    }
+
+    .title-box {
+        gap: 0;
     }
 
     .buttons-container {

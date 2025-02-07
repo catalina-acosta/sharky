@@ -15,42 +15,47 @@ function clearAllIntervals() {
 }
 
 function startGame() {
-        if (window.matchMedia("(pointer: coarse)").matches) {
-            if (window.matchMedia("(orientation: landscape)").matches || window.innerWidth > 768) {
-                dialogBox = document.getElementById("dialog-container");
-                dialogBox.innerHTML = "";
-                initLevel();
-                canvas = document.getElementById("canvas");
-                canvas.classList.remove("d-none");
-                world = new World(canvas, keyboard);
-                AudioLibrary.SOUNDTRACK.play();
-                AudioLibrary.isSoundOn = true;
-                isGameStarted = true;
-
-                let buttonsMobile = document.getElementById("buttonsMobile");
-                buttonsMobile.classList.add("visible");
-                addTouchEventListeners();
-            } else {
-                dialogBox = document.getElementById("dialog-container");
-                dialogBox.innerHTML = errorTemplate();
-            }
+    if (window.matchMedia("(pointer: coarse)").matches) {
+        if (window.matchMedia("(orientation: landscape)").matches || window.innerWidth > 768) {
+            startGameLandscapeMode();
+            addTouchEventListeners();
         } else {
             dialogBox = document.getElementById("dialog-container");
-            dialogBox.innerHTML = "";
-            initLevel();
-            canvas = document.getElementById("canvas");
-            canvas.classList.remove("d-none");
-            world = new World(canvas, keyboard);
-            AudioLibrary.SOUNDTRACK.play();
-            AudioLibrary.isSoundOn = true;
-            isGameStarted = true;
-
-            let buttonsMobile = document.getElementById("buttonsMobile");
-            buttonsMobile.classList.add("visible");
-            addTouchEventListeners();
+            dialogBox.innerHTML = errorTemplate();
         }
+    } else {
+        startGameNormalScreen();
+        addTouchEventListeners();
+    }
 }
 
+function startGameLandscapeMode() {
+    dialogBox = document.getElementById("dialog-container");
+    dialogBox.innerHTML = "";
+    initLevel();
+    canvas = document.getElementById("canvas");
+    canvas.classList.remove("d-none");
+    world = new World(canvas, keyboard);
+    AudioLibrary.SOUNDTRACK.play();
+    AudioLibrary.isSoundOn = true;
+    isGameStarted = true;
+    let buttonsMobile = document.getElementById("buttonsMobile");
+    buttonsMobile.classList.add("visible");
+}
+
+function startGameNormalScreen() {
+    dialogBox = document.getElementById("dialog-container");
+    dialogBox.innerHTML = "";
+    initLevel();
+    canvas = document.getElementById("canvas");
+    canvas.classList.remove("d-none");
+    world = new World(canvas, keyboard);
+    AudioLibrary.SOUNDTRACK.play();
+    AudioLibrary.isSoundOn = true;
+    isGameStarted = true;
+    let buttonsMobile = document.getElementById("buttonsMobile");
+    buttonsMobile.classList.add("visible");
+}
 
 function init() {
     stopSound();
@@ -60,7 +65,6 @@ function init() {
     dialogBox.innerHTML = landingPageTemplate();
     let musicIconRef = document.getElementById("musicIncons");
     musicIconRef.innerHTML = musicOnTemplate();
-
     let buttonsMobile = document.getElementById("buttonsMobile");
     buttonsMobile.classList.remove("visible");
     isGameStarted = false;
@@ -83,9 +87,7 @@ function playSound() {
 function renderInstructions() {
     dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = instructionsTemplate();
-
 }
-
 
 window.addEventListener('keydown', (event) => {
     if (event.code === 'ArrowRight') {
@@ -188,11 +190,13 @@ function addTouchEventListeners() {
         document.getElementById('dKey').addEventListener('touchstart', (event) => {
             event.preventDefault();
             keyboard.D = true;
+            console.log("key d touched")
         });
 
         document.getElementById('dKey').addEventListener('touchend', (event) => {
             event.preventDefault();
             keyboard.D = false;
+            keyboard.D_SOLVED = false;
         });
 
         document.getElementById('spaceKey').addEventListener('touchstart', (event) => {
