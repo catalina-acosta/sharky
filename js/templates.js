@@ -1,8 +1,5 @@
 function instructionsTemplate() {
     return `<div id="dialog-box">
-                <div class="button-wrapper">
-                    <button id="closeButton" onclick="restartGame()">X</button>
-                </div>
                 <h2>HOW TO PLAY</h2>
                 <div class="key-container">
                     <div class="single-key-container">
@@ -85,12 +82,9 @@ function errorTemplate(){
 
 function impressumTemplate() {
     return `
-        <div class="button-wrapper-impressum">
-            <button id="closeButton" onclick="restartGame()">X</button>
-        </div>
         <div id="impressum" class="impressum-template">
             <div class="impressum-content">
-                <h1 class="adsimple-322944536">Impressum</h1>
+                <h2 class="adsimple-322944536">Impressum</h2>
                 <p class="adsimple-322944536">Informationen über den Diensteanbieter.</p>
                 <p class="adsimple-322944536">Catalina Acosta Rivera</p>
                 <p class="adsimple-322944536">Fichtelgebirgstr. 29, <br />93057 Regensburg, <br />Deutschland</p>

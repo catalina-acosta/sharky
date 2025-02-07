@@ -15,8 +15,8 @@ function clearAllIntervals() {
 }
 
 function startGame() {
-    if (window.matchMedia("(pointer: coarse)").matches) {
-        if (window.matchMedia("(orientation: landscape)").matches || window.innerWidth > 768) {
+    if (window.matchMedia("(hover: none)").matches) {
+        if (window.matchMedia("(orientation: landscape)").matches) {
             startGameLandscapeMode();
             addTouchEventListeners();
         } else {
@@ -210,18 +210,6 @@ function addTouchEventListeners() {
         });
     }
 }
-
-function handleOrientationChange() {
-    if (window.matchMedia("(orientation: portrait)").matches) {
-    } else if (window.matchMedia("(orientation: landscape)").matches) {
-    }
-    addTouchEventListeners();
-}
-
-window.addEventListener('orientationchange', handleOrientationChange);
-window.addEventListener('resize', handleOrientationChange);
-
-handleOrientationChange();
 
 function showImpressum() {
     let dialogRef = document.getElementById('dialog-container');
