@@ -6,7 +6,7 @@ class Character extends MovableObject {
     isAttacking = false;
     inactivityTimer;
     inactivityDuration = 15000;
-    isLongIdle = false; // attribute to check if lonIdle should be played
+    isLongIdle = false; 
 
     offset = {
         top: 90,

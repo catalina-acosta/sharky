@@ -47,7 +47,6 @@ class EndBoss extends MovableObject {
                 this.hadFirstContact = true;
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_FLOATING);
             } else if (distanceToCharacter <= 350) {
-                AudioLibrary.playSound(AudioLibrary.ENDBOSS_ATTACK);
                 this.playAnimation(ImageArray.ENDBOSS_IMAGES_ATTACK);
                 this.followCharacter();
             }

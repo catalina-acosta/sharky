@@ -65,9 +65,10 @@ class World {
     checkCollisions() {
         this.level.enemies.forEach( (enemy, index) => {
             if (this.character.isColliding(enemy) && this.keyboard.SPACE && this.character.isAttacking == true ) {
+                this.enemies[index].energy = 0;
                 setTimeout(() => {
+                    this.enemies.splice(index, 1);
                 }, 1000);
-                this.enemies.splice(index, 1);
             } else if(this.character.isColliding(enemy)) {
                 this.character.hit(5);
                 this.statusBarEnergy.setPercentage(this.character.energy);
@@ -90,7 +91,12 @@ class World {
         this.bubbles.forEach(bubble => {
             this.enemies.forEach((enemy, index) => {
                 if (enemy.isColliding(bubble)) {
-                    this.enemies.splice(index, 1);
+                    this.bubbles.splice(bubble, 1);
+                    this.enemies[index].energy = 0;
+                    setTimeout(() => {
+                        this.enemies.splice(index, 1);
+                    }, 1000);
+
                 } 
             })
         });
