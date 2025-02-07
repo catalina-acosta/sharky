@@ -62,13 +62,10 @@ class Enemy extends MovableObject {
 
         setInterval(() => {
             if(this.isDead()) {
-                console.log("died");
-                
                 this.playAnimation(this.IMAGES_DEAD);
             } else {
                 this.playAnimation(this.IMAGES);
             }
-
         }, 200);
     }
 }

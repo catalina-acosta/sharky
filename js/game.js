@@ -143,8 +143,6 @@ window.addEventListener('keyup', (event) => {
 });
 
 function addTouchEventListeners() {
-    console.log(isGameStarted);
-    
     if (isGameStarted && window.matchMedia("(hover: none)").matches) {
         document.getElementById('up').addEventListener('touchstart', (event) => {
             event.preventDefault();
