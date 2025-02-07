@@ -283,7 +283,9 @@ class World {
      */
     endBossWon() {
         let winner = "Endboss";
-        AudioLibrary.GAMEOVER_SOUND.play();
+        if(AudioLibrary.isSoundOn == true) {
+            AudioLibrary.GAMEOVER_SOUND.play();
+        }
         setTimeout(() => {
             this.renderGameOver(winner);
         }, 1000);
@@ -294,7 +296,9 @@ class World {
      */
     characterWon() {
         let winner = "Character";
-        AudioLibrary.VICTORY.play();
+        if(AudioLibrary.isSoundOn == true) {
+            AudioLibrary.VICTORY.play();
+        }
         setTimeout(() => {
             this.renderGameOver(winner);
         }, 2000);

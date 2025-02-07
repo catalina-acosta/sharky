@@ -10,7 +10,7 @@ class Coin extends MovableObject {
     /**
      * set x y for 
      */
-    constructor() { // wie soll man hier den constructor doocumentieren? Keine attributen in den Klammern aber oben gelistet
+    constructor() {
         super().loadImg('img/4. Marcadores/1. Coins/3.png');
         this.x =  Math.random() * 1700;
         this.y = Math.random() * 400;

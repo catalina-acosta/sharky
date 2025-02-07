@@ -1,3 +1,7 @@
+/**
+ * Returns the instructions template.
+ * @returns {string} The HTML string for the instructions template.
+ */
 function instructionsTemplate() {
     return `<div id="dialog-box">
                 <h2>HOW TO PLAY</h2>
@@ -19,7 +23,10 @@ function instructionsTemplate() {
             </div>`
 }
 
-
+/**
+ * Returns the game lost template.
+ * @returns {string} The HTML string for the game lost template.
+ */
 function gameLostTemplate() {
     return `
         <div class="game-over-box">
@@ -28,9 +35,12 @@ function gameLostTemplate() {
                 <button id="tryAgainButton" onclick="restartGame()"><img src="img/6.Botones/Try again/Recurso 16.png" alt="game over"></button>
             <div>
         </div>`
-    
 }
 
+/**
+ * Returns the game won template.
+ * @returns {string} The HTML string for the game won template.
+ */
 function gameWonTemplate() {
     return `
         <div class="game-over-box">
@@ -41,6 +51,10 @@ function gameWonTemplate() {
         </div>`
 }
 
+/**
+ * Returns the landing page template.
+ * @returns {string} The HTML string for the landing page template.
+ */
 function landingPageTemplate() {
     return `
             <div id="dialog-box">
@@ -60,17 +74,29 @@ function landingPageTemplate() {
         `
 }
 
+/**
+ * Returns the music on template.
+ * @returns {string} The HTML string for the music on template.
+ */
 function musicOnTemplate() {
     return `
             <i class="fa-solid fa-volume-high" id="musicOn" onclick="stopSound()"></i>`
 }
 
+/**
+ * Returns the music off template.
+ * @returns {string} The HTML string for the music off template.
+ */
 function musicOffTemplate() {
     return `
     <i class="fa-solid fa-volume-off" id="musicOff" onclick="playSound()"></i>
     `
 }
 
+/**
+ * Returns the error template.
+ * @returns {string} The HTML string for the error template.
+ */
 function errorTemplate(){
     return `
     <div class="error-template">
@@ -80,6 +106,10 @@ function errorTemplate(){
     `
 }
 
+/**
+ * Returns the impressum template.
+ * @returns {string} The HTML string for the impressum template.
+ */
 function impressumTemplate() {
     return `
         <div id="impressum" class="impressum-template">
@@ -113,7 +143,6 @@ function impressumTemplate() {
                 </div>
                 <p>Alle Texte sind urheberrechtlich geschützt.</p>
                 <p style="margin-top:15px">Quelle: Erstellt mit dem <a href="https://www.adsimple.de/impressum-generator/" title="Impressum Generator Deutschland von AdSimple">Impressum Generator</a> von AdSimple</p>
-
             </div>
         </div>
         `

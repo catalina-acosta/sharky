@@ -1,19 +1,56 @@
+/**
+ * The canvas element.
+ * @type {HTMLCanvasElement}
+ */
 let canvas;
+
+/**
+ * The game world instance.
+ * @type {World}
+ */
 let world;
+
+/**
+ * Indicates whether the game has started.
+ * @type {boolean}
+ */
 let isGameStarted = false;
+
+/**
+ * The keyboard input handler.
+ * @type {Keyboard}
+ */
 let keyboard = new Keyboard();
+
+/**
+ * The reference to the music icon element.
+ * @type {HTMLElement}
+ */
 let musicIconRef = document.getElementById("musicIncons");
+
+/**
+ * Initializes the game soundtrack volume.
+ */
 AudioLibrary.SOUNDTRACK.volume = 0.1;
 
+/**
+ * Restarts the game by clearing all intervals and reinitializing the game.
+ */
 function restartGame() {
     clearAllIntervals();
     init();
 }
 
+/**
+ * Clears all active intervals.
+ */
 function clearAllIntervals() {
     for (let i = 1; i < 9999; i++) window.clearInterval(i);
 }
 
+/**
+ * Starts the game based on the device's orientation and screen type.
+ */
 function startGame() {
     if (window.matchMedia("(hover: none)").matches) {
         if (window.matchMedia("(orientation: landscape)").matches) {
@@ -29,6 +66,9 @@ function startGame() {
     }
 }
 
+/**
+ * Starts the game in landscape mode.
+ */
 function startGameLandscapeMode() {
     dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = "";
@@ -43,6 +83,9 @@ function startGameLandscapeMode() {
     buttonsMobile.classList.add("visible");
 }
 
+/**
+ * Starts the game in normal screen mode.
+ */
 function startGameNormalScreen() {
     dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = "";
@@ -57,6 +100,9 @@ function startGameNormalScreen() {
     buttonsMobile.classList.add("visible");
 }
 
+/**
+ * Initializes the game by stopping the sound, hiding the canvas, and displaying the landing page.
+ */
 function init() {
     stopSound();
     canvas = document.getElementById("canvas");
@@ -70,6 +116,9 @@ function init() {
     isGameStarted = false;
 }
 
+/**
+ * Stops all sounds and updates the music icon.
+ */
 function stopSound() {
     AudioLibrary.stopAll();
     AudioLibrary.isSoundOn = false;
@@ -77,6 +126,9 @@ function stopSound() {
     musicIconRef.innerHTML = musicOffTemplate();
 }
 
+/**
+ * Plays the game soundtrack and updates the music icon.
+ */
 function playSound() {
     AudioLibrary.SOUNDTRACK.play();
     let musicIconRef = document.getElementById("musicIncons");
@@ -84,11 +136,17 @@ function playSound() {
     AudioLibrary.isSoundOn = true;
 }
 
+/**
+ * Renders the instructions template in the dialog container.
+ */
 function renderInstructions() {
     dialogBox = document.getElementById("dialog-container");
     dialogBox.innerHTML = instructionsTemplate();
 }
 
+/**
+ * Handles keydown events to update the keyboard object.
+ */
 window.addEventListener('keydown', (event) => {
     if (event.code === 'ArrowRight') {
         keyboard.RIGHT = true;
@@ -104,7 +162,6 @@ window.addEventListener('keydown', (event) => {
 
     if (event.code === 'Space') {
         keyboard.SPACE = true;
-
     }
 
     if (event.code === 'ArrowDown') {
@@ -113,10 +170,12 @@ window.addEventListener('keydown', (event) => {
 
     if (event.code === 'KeyD') {
         keyboard.D = true;
-
     }
 });
 
+/**
+ * Handles keyup events to update the keyboard object.
+ */
 window.addEventListener('keyup', (event) => {
     if (event.code === 'ArrowRight') {
         keyboard.RIGHT = false;
@@ -131,7 +190,7 @@ window.addEventListener('keyup', (event) => {
     }
 
     if (event.code === 'Space') {
-
+        keyboard.SPACE = false;
     }
 
     if (event.code === 'ArrowDown') {
@@ -144,11 +203,13 @@ window.addEventListener('keyup', (event) => {
     }
 });
 
+/**
+ * Adds touch event listeners for game controls.
+ */
 function addTouchEventListeners() {
     if (isGameStarted && window.matchMedia("(hover: none)").matches) {
         document.getElementById('up').addEventListener('touchstart', (event) => {
             event.preventDefault();
-            console.log("key up");
             keyboard.UP = true;
         });
 
@@ -190,7 +251,6 @@ function addTouchEventListeners() {
         document.getElementById('dKey').addEventListener('touchstart', (event) => {
             event.preventDefault();
             keyboard.D = true;
-            console.log("key d touched")
         });
 
         document.getElementById('dKey').addEventListener('touchend', (event) => {
@@ -211,11 +271,17 @@ function addTouchEventListeners() {
     }
 }
 
+/**
+ * Displays the impressum template in the dialog container.
+ */
 function showImpressum() {
     let dialogRef = document.getElementById('dialog-container');
     dialogRef.innerHTML = impressumTemplate(); 
 }
 
+/**
+ * Hides the impressum by adding the 'd-none' class.
+ */
 function hideImpressum() {
     document.getElementById('impressum').classList.add('d-none');
 }
