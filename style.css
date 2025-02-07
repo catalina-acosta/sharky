@@ -99,7 +99,6 @@ button:hover {
     width: 200px;
 }
 
-
 .key-container {
     display: flex;
     align-items: flex-start;
@@ -209,7 +208,6 @@ button:hover {
 #buttonsMobile i {
     font-size: 36px;
     color: white;
-
 }
 
 .arrow-btns {
@@ -249,6 +247,7 @@ button:hover {
     text-align: center;
     padding: 24px 8px;
 }
+
 .impressum-template {
     display: flex ;
     flex-direction: column;
@@ -261,11 +260,6 @@ button:hover {
     width: 80%;
     max-height: 80%;
     overflow-y: auto;
-}
-
-#closeButton {
-    padding: 8px 12px;
-    font-size: 18px;
 }
 
 .main-buttons {
